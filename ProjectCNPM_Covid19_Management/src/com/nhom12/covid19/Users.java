@@ -23,6 +23,8 @@ public class Users {
             // add client on mysql database
             ps = my_connection.createConnection().prepareStatement(addQuery);
             
+            ps.setString(1, username);
+            ps.setString(2, password);
             
             return (ps.executeUpdate() > 0);
             
