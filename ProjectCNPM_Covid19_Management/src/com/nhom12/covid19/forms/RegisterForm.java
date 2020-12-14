@@ -5,14 +5,18 @@
  */
 package com.nhom12.covid19.forms;
 
+import com.nhom12.covid19.Users;
+import javax.swing.JOptionPane;
 
 public class RegisterForm extends javax.swing.JFrame {
 
+    Users user = new Users();
     /**
      * Creates new form RegisterForm
      */
     public RegisterForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,6 +35,7 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextFieldUsername = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jButtonRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +84,16 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
+        jButtonRegister.setBackground(new java.awt.Color(51, 255, 0));
+        jButtonRegister.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButtonRegister.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRegister.setText("REGISTER");
+        jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,14 +101,17 @@ public class RegisterForm extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +125,9 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jPasswordField1))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jButtonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,6 +151,29 @@ public class RegisterForm extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
+
+        // add a new users
+
+        // get data from the fields
+        String username = jTextFieldUsername.getText();
+        String password = String.valueOf(jPasswordField1.getPassword());
+
+        if(username.trim().equals("") || password.trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Required Fields -> Username + Password !", "Empty Fields", JOptionPane.WARNING_MESSAGE);
+        } else {
+            // trong check if duoi, da co add database !!!
+            if (user.addUser(username, password)) {
+                JOptionPane.showMessageDialog(rootPane, "New user added successfully !", "Add User", JOptionPane.INFORMATION_MESSAGE);
+                jTextFieldUsername.setText("");
+                jPasswordField1.setText("");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "User didn't added !", "Add User Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +211,7 @@ public class RegisterForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
