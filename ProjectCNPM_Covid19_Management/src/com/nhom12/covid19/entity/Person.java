@@ -22,7 +22,28 @@ public class Person {
     
     // method to search person by cmt
     public boolean searchPerson(String cmt){
-        return true;
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT * FROM `people` WHERE `cmt`=?";
+        
+        try {
+            
+            ps = my_connection.createConnection().prepareStatement(selectQuery);
+            
+            ps.setString(1, cmt);
+            rs = ps.executeQuery();
+            
+            // chưa đúng lắm -> hiểu thêm
+            if(rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     // method to add new person
     public boolean addPerson(String name, String birthday, String gender, String bhyt, String bhyt_num, String cmt, String ho_khau, String phone, String email, String address){
