@@ -112,8 +112,24 @@ public class Person {
            
     }
     public boolean removePerson(int idPerson){
+
+        PreparedStatement ps;
+        String deleteQuery = "DELETE FROM `people` WHERE `id`=?";
         
-        return true;
+        try {
+            // add client on mysql database
+            ps = my_connection.createConnection().prepareStatement(deleteQuery);
+            
+            // theo thu tu dau ?
+            ps.setInt(1, idPerson);
+            
+            return (ps.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
     }
     
 }
