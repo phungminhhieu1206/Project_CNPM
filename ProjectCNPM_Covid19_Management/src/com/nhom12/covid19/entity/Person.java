@@ -22,13 +22,59 @@ public class Person {
     
     // method to search person by cmt
     public boolean searchPerson(String cmt){
-        return true;
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT * FROM `people` WHERE `cmt`=?";
+        
+        try {
+            
+            ps = my_connection.createConnection().prepareStatement(selectQuery);
+            
+            ps.setString(1, cmt);
+            rs = ps.executeQuery();
+            
+            // chưa đúng lắm -> hiểu thêm
+            if(rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     // method to add new person
     public boolean addPerson(String name, String birthday, String gender, String bhyt, String bhyt_num, String cmt, String ho_khau, String phone, String email, String address){
         
         
-        return true;
+                PreparedStatement ps;
+        String addQuery = "INSERT INTO `people`(`name`, `birthday`, `gender`, `bhyt`, `bhyt_num`, `cmt`, `ho_khau`, `phone`, `email`, `address`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        
+        try {
+            // add client on mysql database
+            ps = my_connection.createConnection().prepareStatement(addQuery);
+            
+            // theo thu tu dau ?
+            ps.setString(1, name);
+            ps.setString(2, birthday);
+            ps.setString(3, gender);
+            ps.setString(4, bhyt);
+            ps.setString(5, bhyt_num);
+            ps.setString(6, cmt);
+            ps.setString(7, ho_khau);
+            ps.setString(8, phone);
+            ps.setString(9, email);
+            ps.setString(10, address);
+            
+            return (ps.executeUpdate() > 0);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
         
     }
     
