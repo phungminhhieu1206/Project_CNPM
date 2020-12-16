@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nhom12.covid19.forms.input;
 import com.nhom12.covid19.MY_CONNECTION;
 import com.nhom12.covid19.entity.DichTe;
+import com.nhom12.covid19.entity.Person;
+import com.nhom12.covid19.forms.input.PersonForm;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
