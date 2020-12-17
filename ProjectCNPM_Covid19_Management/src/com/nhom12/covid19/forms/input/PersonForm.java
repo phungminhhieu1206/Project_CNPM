@@ -416,7 +416,42 @@ public class PersonForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEDITActionPerformed
 
     private void jButtonADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonADDActionPerformed
+        
+        try {
+            
+            String name = jTextPersonName.getText();
+            // date
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // theo chuan cua db dang sd
+            String birthday = dateFormat.format(jDateChooserPersonBirthday.getDate());
+            // combobox
+            String gender = (String) jComboBoxPersonGender.getSelectedItem();
+            // radio
+            String bhyt = null;
+            if(jRadioButtonPersonBHYT_YES.isSelected()){
+                bhyt = "Có";
+            }
+            if(jRadioButtonPersonBHYT_NO.isSelected()){
+                bhyt = "Không";
+            }
+            
+            String bhyt_num = jTextFieldPersonMSYT.getText();
+            String cmt = jTextFieldPersonCMT.getText();
+            String ho_khau = jTextFieldPersonHOKHAU.getText();
+            String phone = jTextFieldPersonPhone.getText();
+            String email = jTextFieldPersonGmail.getText();
+            String address = jTextAreaPersonAddress.getText();
 
+            if (person.addPerson(name, birthday, gender, bhyt, bhyt_num, cmt, ho_khau, phone, email, address)) {
+                JOptionPane.showMessageDialog(rootPane, "New person added successfully !", "Add Person", JOptionPane.INFORMATION_MESSAGE);
+                this.clearFiles();
+                
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Person not added !", "Add Person Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the person fields number !", "Person Fields Type Number Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonADDActionPerformed
 
     private void jButtonREMOVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonREMOVEActionPerformed
