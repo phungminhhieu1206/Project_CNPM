@@ -463,7 +463,89 @@ public class PersonForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCLEARActionPerformed
 
     private void jButtonSEARCHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSEARCHActionPerformed
+       
+        String cmt = null;
+        cmt = jTextFieldPersonCMT.getText().trim();
+        
+        if (cmt.trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Hãy nhập CMT/CCCD trước khi nhấn \"Tìm kiếm\"", "CMT/CCCD đang trống", 2);
+        } else {
+            
+            // search the person with person's CMT
+            if(person.searchPerson(cmt) == false){
+                JOptionPane.showMessageDialog(rootPane, "Cư dân có CMT: " + cmt + " chưa được khai báo thông tin !\nHãy tiến hành thêm mới thông tin cư dân", "Tìm kiếm thông tin cư dân", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                int id = 0;
+                String name = null;
+                String birthday = null;
+                String gender = null;
+                String bhyt = null;
+                String bhyt_num = null;
+                String ho_khau = null;
+                String phone = null;
+                String email = null;
+                String address = null;
+                
+                // connect to database to get data with cmt/cccd
+                PreparedStatement ps;
+                ResultSet rs;
+                String searchQuery = "SELECT `id`,`name`,`birthday`,`gender`,`bhyt`,`bhyt_num`,`ho_khau`,`phone`,`email`,`address` FROM `people` WHERE `cmt`=?";
+                try {
+                    ps = my_connection.createConnection().prepareStatement(searchQuery);
+                    ps.setString(1, cmt);
 
+                    rs = ps.executeQuery();
+
+                    while(rs.next()){
+                        id = rs.getInt(1);
+                        name = rs.getString(2);
+                        birthday = rs.getString(3);
+                        gender = rs.getString(4);
+                        bhyt = rs.getString(5);
+                        bhyt_num = rs.getString(6);
+                        ho_khau = rs.getString(7);
+                        phone = rs.getString(8);
+                        email = rs.getString(9);
+                        address = rs.getString(10);
+                        
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(PersonForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                // đổ dữ liệu ra các trường của form:
+                
+                jTextPersonName.setText(name);
+                
+                // 1. set the date
+                try {
+                    Date dateIn = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
+                    jDateChooserPersonBirthday.setDate(dateIn);
+                } catch (ParseException ex) {
+                    Logger.getLogger(PersonForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // 2. set the combobox
+                jComboBoxPersonGender.setSelectedItem(gender);
+                
+                // 3. set the radio
+                if (bhyt.equals("Có")){
+                    jRadioButtonPersonBHYT_YES.setSelected(true);
+                } else if (bhyt.equals("Không")) {
+                    jRadioButtonPersonBHYT_NO.setSelected(true);
+                }
+                
+                
+                jTextFieldPersonMSYT.setText(bhyt_num);
+                jTextFieldPersonHOKHAU.setText(ho_khau);
+                jTextFieldPersonPhone.setText(phone);
+                jTextFieldPersonGmail.setText(email);
+                jTextAreaPersonAddress.setText(address);
+                
+            }
+        }
     }//GEN-LAST:event_jButtonSEARCHActionPerformed
 
     /**
