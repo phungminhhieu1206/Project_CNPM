@@ -511,7 +511,43 @@ public class PersonForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonADDActionPerformed
 
     private void jButtonREMOVEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonREMOVEActionPerformed
+      
+        // deleted the selected client
+        try {
+            String cmt = jTextFieldPersonCMT.getText();
+        //                ----- get ID Person -----
+            int idPerson = 0;
+            // connect to database to get data with cmt/cccd
+            PreparedStatement psID;
+            ResultSet rsID;
+            String searchQueryID = "SELECT `id` FROM `people` WHERE `cmt`=?";
+            try {
+                psID = my_connection.createConnection().prepareStatement(searchQueryID);
+                psID.setString(1, cmt);
 
+                rsID = psID.executeQuery();
+
+                while (rsID.next()) {
+                    idPerson = rsID.getInt(1);
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(DichTeForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+//                ----- END get ID -----
+
+            // trong check if duoi, da co edit database !!!
+            if (person.removePerson(idPerson)) {
+                JOptionPane.showMessageDialog(rootPane, "Person deleted successfully !", "Remove Person", JOptionPane.INFORMATION_MESSAGE);
+                this.clearFiles();
+                
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Person not deleted !", "Remove Person Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the person's id (Number) !", "Person Id Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonREMOVEActionPerformed
 
     private void jButtonCLEARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCLEARActionPerformed
