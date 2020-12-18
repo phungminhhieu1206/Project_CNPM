@@ -100,17 +100,7 @@ public class Person {
             ps.setString(9, email);
             ps.setString(10, address);
             ps.setInt(11, idPerson);
-            /*ps.setString(1, name);
-            ps.setString(2, birthday);
-            ps.setString(3, gender);
-            ps.setString(4, bhyt);
-            ps.setString(5, bhyt_num);
-            ps.setString(6, cmt);
-            ps.setString(7, ho_khau);
-            ps.setString(8, phone);
-            ps.setString(9, email);
-            ps.setString(10, address);
-            ps.setInt(11, idPerson);*/
+           
             
             return (ps.executeUpdate() > 0);
             
@@ -142,25 +132,6 @@ public class Person {
         }
         
     }
-    public boolean remoPerson(int idPerson){
 
-        PreparedStatement ps;
-        String deleteQuery = "DELETE FROM `people` WHERE `id`=?";
-        
-        try {
-            // add client on mysql database
-            ps = my_connection.createConnection().prepareStatement(deleteQuery);
-            
-            // theo thu tu dau ?
-            ps.setInt(1, idPerson);
-            
-            return (ps.executeUpdate() > 0);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        
-    }
     
 }
