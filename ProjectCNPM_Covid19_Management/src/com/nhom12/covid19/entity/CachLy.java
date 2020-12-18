@@ -151,69 +151,7 @@ public class CachLy {
         }
         
     }
-    /* public boolean removeCachLy(int id) {
-
-        PreparedStatement ps;
-        String deleteQuery = "DELETE FROM `cach_ly` WHERE `id`=?";
-        
-        try {
-            // add client on mysql database
-            ps = my_connection.createConnection().prepareStatement(deleteQuery);
-            
-            // theo thu tu dau ?
-            ps.setInt(1, id);
-            
-            return (ps.executeUpdate() > 0);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CachLy.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        
-    }
-    
-    public boolean removeTest(int idPerson) {
-
-        PreparedStatement ps;
-        String deleteQuery = "DELETE FROM `test_covid` WHERE `id_person`=?";
-        
-        try {
-            // add client on mysql database
-            ps = my_connection.createConnection().prepareStatement(deleteQuery);
-            
-            // theo thu tu dau ?
-            ps.setInt(1, idPerson);
-            
-            return (ps.executeUpdate() > 0);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CachLy.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        
-    }
-    
-    public boolean removeOneTest(int timeTest) {
-
-        PreparedStatement ps;
-        String deleteQuery = "DELETE FROM `test_covid` WHERE `times_test`=?";
-        
-        try {
-            // add client on mysql database
-            ps = my_connection.createConnection().prepareStatement(deleteQuery);
-            
-            // theo thu tu dau ?
-            ps.setInt(1, timeTest);
-            
-            return (ps.executeUpdate() > 0);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CachLy.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-        
-    }*/
-    /* Các phương thức chỉnh sửa */
+   
     
     public boolean editCachLy(int idPerson, String ngayKhaiCL, int type, int level, String dateStart, String addressCL, int roomN, int bedN, String nameRoommate) {
 
