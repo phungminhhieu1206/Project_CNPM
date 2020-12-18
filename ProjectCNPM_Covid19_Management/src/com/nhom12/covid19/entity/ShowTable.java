@@ -59,41 +59,7 @@ public class ShowTable {
         } catch (SQLException ex) {
             Logger.getLogger(ShowTable.class.getName()).log(Level.SEVERE, null, ex);
         }
-         /*PreparedStatement ps;
-        ResultSet rs;
-        String selectQuery = "SELECT * FROM `people`";
-        
-        try {
-            
-            ps = my_connection.createConnection().prepareStatement(selectQuery);
-            
-            rs = ps.executeQuery();
-            
-            DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-            
-            Object[] col;
-            
-            while(rs.next()){
-                
-                col = new Object[11]; // because we have 5 fileds of clients in mysql database
-                col[0] = rs.getInt(1);
-                col[1] = rs.getString(2);
-                col[2] = rs.getString(3);
-                col[3] = rs.getString(4);
-                col[4] = rs.getString(5);
-                col[5] = rs.getString(6);
-                col[6] = rs.getString(7);
-                col[7] = rs.getString(8);
-                col[8] = rs.getString(9);
-                col[9] = rs.getString(10);
-                col[10] = rs.getString(11);
-                
-                tableModel.addRow(col);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ShowTable.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+      
     }
     
     
