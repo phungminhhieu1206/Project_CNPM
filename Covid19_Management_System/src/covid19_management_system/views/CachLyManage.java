@@ -5,8 +5,12 @@
  */
 package covid19_management_system.views;
 
+import covid19_management_system.controllers.cachlyController.DeleteCachLyController;
 import covid19_management_system.controllers.cachlyController.ShowTableCachLyController;
+import covid19_management_system.controllers.nhankhauController.DeleteNhanKhauController;
+import covid19_management_system.controllers.nhankhauController.ShowTableNhanKhauController;
 import covid19_management_system.views.CachLy.AddCachLy;
+import covid19_management_system.views.CachLy.EditCachLy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -14,6 +18,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,10 +30,16 @@ public class CachLyManage extends javax.swing.JFrame {
      * Creates new form CachLyManage
      */
     ShowTableCachLyController showTableCachLyController = new ShowTableCachLyController();
+    ShowTableNhanKhauController showTableNhanKhauController = new ShowTableNhanKhauController();
+    DeleteNhanKhauController deleteNhanKhauController = new DeleteNhanKhauController();
+    DeleteCachLyController deleteCachLyController = new DeleteCachLyController();
+
     public CachLyManage() {
         initComponents();
         this.setTitle("Quản lý thông tin khai báo cách ly y tế");
-        
+
+        this.settingTableShowCachLy();
+        showTableCachLyController.showCachLy(jTableKhaiCachLy);
         // confirm de thuc hien dong
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -40,20 +51,23 @@ public class CachLyManage extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void settingTableShowCachLy() {
-//        jTableKhaiCachLy.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
-//        jTableKhaiCachLy.getColumnModel().getColumn(0).setPreferredWidth(1);
-//        jTableKhaiCachLy.getColumnModel().getColumn(1).setPreferredWidth(115);
-//        jTableKhaiCachLy.getColumnModel().getColumn(2).setPreferredWidth(50);
-//        jTableKhaiCachLy.getColumnModel().getColumn(3).setPreferredWidth(20);
-//        jTableKhaiCachLy.getColumnModel().getColumn(4).setPreferredWidth(150);
-//        jTableKhaiCachLy.getColumnModel().getColumn(5).setPreferredWidth(50);
-//        jTableKhaiCachLy.getColumnModel().getColumn(6).setPreferredWidth(50);
-//        jTableKhaiDichTe.getColumnModel().getColumn(7).setPreferredWidth(20);
-//        jTableKhaiDichTe.getColumnModel().getColumn(8).setPreferredWidth(20);
-//        jTableKhaiDichTe.getColumnModel().getColumn(9).setPreferredWidth(170);
-//        jTableKhaiDichTe.getColumnModel().getColumn(10).setPreferredWidth(170);
+        jTableKhaiCachLy.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+        // thông tin cá nhân
+        jTableKhaiCachLy.getColumnModel().getColumn(0).setPreferredWidth(1);
+        jTableKhaiCachLy.getColumnModel().getColumn(1).setPreferredWidth(115);
+        jTableKhaiCachLy.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jTableKhaiCachLy.getColumnModel().getColumn(3).setPreferredWidth(30);
+        jTableKhaiCachLy.getColumnModel().getColumn(4).setPreferredWidth(150);
+        jTableKhaiCachLy.getColumnModel().getColumn(5).setPreferredWidth(50);
+        // thông tin cách ly
+        jTableKhaiCachLy.getColumnModel().getColumn(6).setPreferredWidth(50); // ngày cách ly
+        jTableKhaiCachLy.getColumnModel().getColumn(7).setPreferredWidth(20); // mức
+        jTableKhaiCachLy.getColumnModel().getColumn(8).setPreferredWidth(170); // thông tin cách ly
+        jTableKhaiCachLy.getColumnModel().getColumn(9).setPreferredWidth(50); // ngày test
+        jTableKhaiCachLy.getColumnModel().getColumn(10).setPreferredWidth(170);
+        jTableKhaiCachLy.getColumnModel().getColumn(11).setPreferredWidth(60); // kết quả test
 
         jTableKhaiCachLy.setRowHeight(30);
     }
@@ -117,6 +131,11 @@ public class CachLyManage extends javax.swing.JFrame {
 
         jButtonSearchCachLy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonSearchCachLy.setText("TÌM KIẾM");
+        jButtonSearchCachLy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchCachLyActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("TÌM KIẾM THEO CMT:");
@@ -142,7 +161,7 @@ public class CachLyManage extends javax.swing.JFrame {
                 .addComponent(jButtonSearchCachLy)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonShowInfoCachLy)
-                .addContainerGap(341, Short.MAX_VALUE))
+                .addContainerGap(431, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +183,7 @@ public class CachLyManage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Ngày khai", "TxCovid", "Từ vùng dịch", "Triệu chứng", "Bệnh"
+                "ID", "Họ và tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Ngày cách ly", "Mức", "Thông tin cách ly", "Ngày test", "Thông tin lần cuối test covid", "Kết quả test"
             }
         )
 
@@ -347,24 +366,54 @@ public class CachLyManage extends javax.swing.JFrame {
         temp.setLocationRelativeTo(null);
         temp.setResizable(false);
         temp.setVisible(true);
-        
+
         temp.getjButtonAddCachLy().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temp.addNewCachLy();
-                
-//                settingTableShowCachLy();
-//                showTableCachLyController.showCachLy(jTableKhaiCachLy);
+
+                settingTableShowCachLy();
+                showTableCachLyController.showCachLy(jTableKhaiCachLy);
             }
         });
     }//GEN-LAST:event_jButtonAddCachLyActionPerformed
 
     private void jButtonEditCachLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCachLyActionPerformed
-
+        if (jTFSearchByCMT.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Chọn khai báo cách ly muốn chỉnh sửa", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String chungMinhThu = jTFSearchByCMT.getText().trim();
+            EditCachLy editCachLy = new EditCachLy(chungMinhThu);
+            editCachLy.setLocationRelativeTo(null);
+            editCachLy.setResizable(false);
+            editCachLy.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonEditCachLyActionPerformed
 
     private void jButtonDeleteCachLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCachLyActionPerformed
-        // TODO add your handling code here:
+        if (jTFSearchByCMT.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Chọn khai báo cách ly muốn xóa trên bảng", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String chungMinhThu = jTFSearchByCMT.getText().trim();
+            int IDNhanKhau = 0;
+            IDNhanKhau = deleteNhanKhauController.searchIDFromCMT(chungMinhThu);
+            if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa không ?", "Xác nhận thao tác", JOptionPane.YES_NO_OPTION) == 0) {
+                // xóa
+                if (deleteCachLyController.removeCachLy(IDNhanKhau)) {
+                    deleteCachLyController.removeAllTest(IDNhanKhau);
+
+                    JOptionPane.showMessageDialog(rootPane, "Successfully !", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+                    this.settingTableShowCachLy();
+                    showTableCachLyController.showCachLy(jTableKhaiCachLy);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Fail !", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } else {
+                return;
+            }
+        }
     }//GEN-LAST:event_jButtonDeleteCachLyActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -372,20 +421,20 @@ public class CachLyManage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButtonShowInfoCachLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowInfoCachLyActionPerformed
-//        jTFSearchByCMT.setText("");
-//        this.settingTableShowDichTe();
-//        showTableDichTeController.showDichTe(jTableKhaiDichTe);
+        jTFSearchByCMT.setText("");
+        this.settingTableShowCachLy();
+        showTableCachLyController.showCachLy(jTableKhaiCachLy);
     }//GEN-LAST:event_jButtonShowInfoCachLyActionPerformed
 
     private void jTableKhaiCachLyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhaiCachLyMouseClicked
-//        DefaultTableModel model = (DefaultTableModel) jTableKhaiDichTe.getModel();
-//        int rowIndex = jTableKhaiDichTe.getSelectedRow();
-//        // display data
-//        int ID = 0;
-//        ID = (int) model.getValueAt(rowIndex, 0);
-//        //        jTFSearchByCMT.setText(model.getValueAt(rowIndex, 0).toString());
-//        String chungMinhThu = showTableNhanKhauController.searchCMTByID(ID).trim();
-//        jTFSearchByCMT.setText(chungMinhThu);
+        DefaultTableModel model = (DefaultTableModel) jTableKhaiCachLy.getModel();
+        int rowIndex = jTableKhaiCachLy.getSelectedRow();
+        // display data
+        int ID = 0;
+        ID = (int) model.getValueAt(rowIndex, 0);
+        //        jTFSearchByCMT.setText(model.getValueAt(rowIndex, 0).toString());
+        String chungMinhThu = showTableNhanKhauController.searchCMTByID(ID).trim();
+        jTFSearchByCMT.setText(chungMinhThu);
     }//GEN-LAST:event_jTableKhaiCachLyMouseClicked
 
     private void jTableKhaiCachLyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhaiCachLyMouseEntered
@@ -393,16 +442,55 @@ public class CachLyManage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableKhaiCachLyMouseEntered
 
     private void jButtonXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXemChiTietActionPerformed
-        //        if (jTFSearchByCMT.getText().isEmpty()){
-            //            JOptionPane.showMessageDialog(rootPane, "Chọn nhân khẩu muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
-            //        } else {
-            //            String chungMinhThu = jTFSearchByCMT.getText().trim();
-            //            InfoNhanKhau infoNhanKhau = new InfoNhanKhau(chungMinhThu);
-            //            infoNhanKhau.setLocationRelativeTo(null);
-            //            infoNhanKhau.setResizable(false);
-            //            infoNhanKhau.setVisible(true);
-            //        }
+//                if (jTFSearchByCMT.getText().isEmpty()){
+//                        JOptionPane.showMessageDialog(rootPane, "Chọn nhân khẩu muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
+//                    } else {
+//                        String chungMinhThu = jTFSearchByCMT.getText().trim();
+//                        InfoNhanKhau infoNhanKhau = new InfoNhanKhau(chungMinhThu);
+//                        infoNhanKhau.setLocationRelativeTo(null);
+//                        infoNhanKhau.setResizable(false);
+//                        infoNhanKhau.setVisible(true);
+//                    }
     }//GEN-LAST:event_jButtonXemChiTietActionPerformed
+
+    private void jButtonSearchCachLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCachLyActionPerformed
+        if (jTFSearchByCMT.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Nhập chứng minh thư để tìm kiếm ", "Information", JOptionPane.INFORMATION_MESSAGE);
+            this.settingTableShowCachLy();
+            showTableCachLyController.showCachLy(jTableKhaiCachLy);
+            return;
+        } else {
+            String chungMinhThu = jTFSearchByCMT.getText().trim();
+            if (checkDesignCMT()) {
+                showTableCachLyController.showCachLyWithCMT(jTableKhaiCachLy, chungMinhThu);
+                if (jTableKhaiCachLy.getRowCount() == 0) {
+                    this.settingTableShowCachLy();
+                    showTableCachLyController.showCachLy(jTableKhaiCachLy);
+                    JOptionPane.showMessageDialog(rootPane, "Không có nhân khẩu có CMT: " + chungMinhThu, "Information", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Tìm thấy. Hiện trên bảng kìa.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }
+                return;
+            }
+
+        }
+    }//GEN-LAST:event_jButtonSearchCachLyActionPerformed
+
+    private boolean checkDesignCMT() {
+        // check dinh dang so chung minh thu
+        try {
+            long d = Long.parseLong(jTFSearchByCMT.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Số CMT không thể chứa các ký tự chữ cái", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        // kiem tra do dai cmt
+        if (jTFSearchByCMT.getText().length() != 9 && jTFSearchByCMT.getText().length() != 12) {
+            JOptionPane.showMessageDialog(rootPane, "Số CMT có 9 hoặc 12 số", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
 
     /**
      * @param args the command line arguments

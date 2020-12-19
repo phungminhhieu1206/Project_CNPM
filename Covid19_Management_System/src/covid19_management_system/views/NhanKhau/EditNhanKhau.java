@@ -825,7 +825,7 @@ public class EditNhanKhau extends javax.swing.JFrame {
             try {
                 if (editNhanKhauController.editNhanKhau(ID, nhanKhauModel)) {
                     JOptionPane.showMessageDialog(rootPane, "New person added successfully !", "Add Person", JOptionPane.INFORMATION_MESSAGE);
-
+                    this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Person not added !", "Add Person Error", JOptionPane.ERROR_MESSAGE);
                 }

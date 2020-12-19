@@ -78,7 +78,7 @@ public class CachLy {
     }
     
     /* 2 - Các phương thức DELETE đối tượng cho các bảng*/
-    public boolean removeCachLy(int id) {
+    public boolean removeCachLy(int id) { // id cách ly
 
         PreparedStatement ps;
         String deleteQuery = "DELETE FROM `cach_ly` WHERE `id`=?";
@@ -99,7 +99,7 @@ public class CachLy {
         
     }
     
-    public boolean removeTest(int idPerson) {
+    public boolean removeTest(int idPerson) { // id nhân khẩu
 
         PreparedStatement ps;
         String deleteQuery = "DELETE FROM `test_covid` WHERE `id_person`=?";
