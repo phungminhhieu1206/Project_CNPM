@@ -79,4 +79,53 @@ public class EditCachLyController {
         return null;
     }
     
+    public boolean editCachLy(int ID, CachLyModel temp) {
+        CachLyModel cachLyModel = new CachLyModel();
+        cachLyModel = temp;
+        
+        PreparedStatement preparedStatement;
+        String query = "UPDATE `cach_ly` SET `ngayKhaiCL`=?,`loaiCL`=?,`mucDoCL`=?,`ngayBatDauCL`=?,`diaChiCL`=?,`soPhongCL`=?,`soGiuongCL`=?,`tenNgCungPhCL`=? WHERE `IDNhanKhau`=?";
+        try {
+            preparedStatement = my_connection.createConnection().prepareStatement(query);
+            
+            // date
+            java.sql.Date ngayKhai = new java.sql.Date(cachLyModel.getNgayKhaiCL().getTime());
+            preparedStatement.setDate(1, ngayKhai);
+            // combobox
+            preparedStatement.setInt(2, cachLyModel.getLoaiCL());
+            preparedStatement.setInt(3, cachLyModel.getMucDoCL());
+            // date
+            java.sql.Date ngayBatDauCL = new java.sql.Date(cachLyModel.getNgayBatDauCL().getTime());
+            preparedStatement.setDate(4, ngayBatDauCL);
+            preparedStatement.setString(5, cachLyModel.getDiaChiCL());
+            preparedStatement.setString(6, cachLyModel.getSoPhongCL());
+            preparedStatement.setString(7, cachLyModel.getSoGiuongCL());
+            preparedStatement.setString(8, cachLyModel.getTenNgCungPhCL());
+            preparedStatement.setInt(9, ID);
+            
+            return (preparedStatement.executeUpdate() > 0);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditCachLyController.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }  
+    }
+    
+    public boolean removeOneTest(int timeTest, int IDNhanKhau) {
+
+        PreparedStatement preparedStatement;
+        String deleteQuery = "DELETE FROM `test_covid` WHERE `lanTest`=? and `IDNhanKhau`=?";
+        try {
+            preparedStatement = my_connection.createConnection().prepareStatement(deleteQuery);
+            preparedStatement.setInt(1, timeTest);
+            preparedStatement.setInt(2, IDNhanKhau);
+            
+            return (preparedStatement.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EditCachLyController.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
+    
 }

@@ -130,7 +130,7 @@ public class ShowTableCachLyController {
                 // - search thông tin lần cuối cùng test covid
                 PreparedStatement ps;
                 ResultSet rs;
-                String queryTestCovid = "SELECT `ngayTest`, `lanTest`, `hinhThucTest`, `diaDiemTest`, `ketQuaTest` FROM `test_covid` WHERE `IDNhanKhau`=? ORDER BY `ngayTest` DESC LIMIT 1";
+                String queryTestCovid = "SELECT `ngayTest`, `lanTest`, `hinhThucTest`, `diaDiemTest`, `ketQuaTest` FROM `test_covid` WHERE `IDNhanKhau`=? ORDER BY `ngayTest` DESC, `lanTest` DESC LIMIT 1";
                 try {
                     ps = my_connection.createConnection().prepareStatement(queryTestCovid);
                     ps.setInt(1, IDNhanKhau);

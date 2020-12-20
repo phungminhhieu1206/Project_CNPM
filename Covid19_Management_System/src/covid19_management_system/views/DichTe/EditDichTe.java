@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -1179,6 +1180,10 @@ public class EditDichTe extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFChungMinhThuKeyReleased
 
     private void jButtonEditDichTeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDichTeActionPerformed
+
+    }//GEN-LAST:event_jButtonEditDichTeActionPerformed
+
+    public void editDichTe() {
         if (validateValueInForm()) {
             DichTeModel dichTeModel = new DichTeModel();
             dichTeModel.setID_PERSON(this.IDNhanKhau);
@@ -1212,7 +1217,7 @@ public class EditDichTe extends javax.swing.JFrame {
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the dichTe's id (Number) !", "Dich Te Id Error", JOptionPane.ERROR_MESSAGE);
                     }
-                    
+
                     this.addTrieuChung(IDNhanKhau);
                     this.addBenh(IDNhanKhau);
 
@@ -1224,11 +1229,18 @@ public class EditDichTe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the person fields number !", "Person Fields Type Number Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jButtonEditDichTeActionPerformed
+    }
+
+    public JButton getjButtonEditDichTe() {
+        return jButtonEditDichTe;
+    }
+
+    public void setjButtonEditDichTe(JButton jButtonEditDichTe) {
+        this.jButtonEditDichTe = jButtonEditDichTe;
+    }
 
     // check cac gia tri duoc nhap vao form
     private boolean validateValueInForm() {
-
         // check null
         if ((!jRadioTXCovid_YES.isSelected() && !jRadioTXCovid_NO.isSelected())
                 || (!jRadioTuVungDich_YES.isSelected() && !jRadioTuVungDich_NO.isSelected())) {

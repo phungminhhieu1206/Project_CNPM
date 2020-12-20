@@ -6,6 +6,7 @@
 package covid19_management_system.views.CachLy;
 
 import covid19_management_system.MY_CONNECTION;
+import covid19_management_system.controllers.cachlyController.AddCachLyController;
 import covid19_management_system.controllers.cachlyController.EditCachLyController;
 import covid19_management_system.controllers.dichTeController.EditDichTeController;
 import covid19_management_system.controllers.nhankhauController.EditNhanKhauController;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -41,8 +43,17 @@ public class EditCachLy extends javax.swing.JFrame {
     EditDichTeController editDichTeController = new EditDichTeController();
     EditNhanKhauController editNhanKhauController = new EditNhanKhauController();
     EditCachLyController editCachLyController = new EditCachLyController();
+    AddCachLyController addCachLyController = new AddCachLyController();
 
     ButtonGroup bgCheckBHYT = new ButtonGroup();
+
+    public JButton getjButtonEditCachLy() {
+        return jButtonEditCachLy;
+    }
+
+    public void setjButtonEditCachLy(JButton jButtonEditCachLy) {
+        this.jButtonEditCachLy = jButtonEditCachLy;
+    }
 
     public EditCachLy(String chungMinhThu) {
         initComponents();
@@ -164,7 +175,7 @@ public class EditCachLy extends javax.swing.JFrame {
             // combobox
             jCoBoxHinhThucTest.setSelectedIndex(0);
             jCoBoxKetQuaTest.setSelectedIndex(0);
-            
+
         }
 
     }
@@ -211,7 +222,7 @@ public class EditCachLy extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jTFMaTheBHYT = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
-        jButtonAddCachLy = new javax.swing.JButton();
+        jButtonEditCachLy = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
         jPanel20 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
@@ -531,10 +542,10 @@ public class EditCachLy extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButtonAddCachLy.setText("EDIT");
-        jButtonAddCachLy.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEditCachLy.setText("EDIT");
+        jButtonEditCachLy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddCachLyActionPerformed(evt);
+                jButtonEditCachLyActionPerformed(evt);
             }
         });
 
@@ -551,7 +562,7 @@ public class EditCachLy extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addContainerGap(1057, Short.MAX_VALUE)
-                .addComponent(jButtonAddCachLy)
+                .addComponent(jButtonEditCachLy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonCancel)
                 .addContainerGap())
@@ -562,7 +573,7 @@ public class EditCachLy extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancel)
-                    .addComponent(jButtonAddCachLy))
+                    .addComponent(jButtonEditCachLy))
                 .addContainerGap())
         );
 
@@ -1093,9 +1104,102 @@ public class EditCachLy extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_jTFChungMinhThuKeyPressed
 
-    private void jButtonAddCachLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCachLyActionPerformed
-//        this.addNewCachLy();
-    }//GEN-LAST:event_jButtonAddCachLyActionPerformed
+    private void jButtonEditCachLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditCachLyActionPerformed
+//        this.editCachLy();
+    }//GEN-LAST:event_jButtonEditCachLyActionPerformed
+
+    public void editCachLy() {
+        if (validateValueInForm()) {
+            CachLyModel cachLyModel = new CachLyModel();
+            TestCovidModel testCovidModel = new TestCovidModel();
+
+            cachLyModel.setIDNhanKhau(this.IDNhanKhau);
+            testCovidModel.setIDNhanKhau(this.IDNhanKhau);
+
+            // --- cachly ---
+            // date
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // theo chuan cua db dang sd
+            cachLyModel.setNgayKhaiCLStr(dateFormat.format(jDateCNgayKhaiCL.getDate()));
+            cachLyModel.setNgayKhaiCL(jDateCNgayKhaiCL.getDate());
+            // combobox
+            cachLyModel.setLoaiCL(jCoBoxLoaiCL.getSelectedIndex());
+            cachLyModel.setMucDoCL(jCoBoxMucDoCL.getSelectedIndex());
+            // date
+            cachLyModel.setNgayBatDauCLStr(dateFormat.format(jDateCNgayBatDauCL.getDate()));
+            cachLyModel.setNgayBatDauCL(jDateCNgayBatDauCL.getDate());
+            cachLyModel.setDiaChiCL(jTFDiaDiemCL.getText().trim());
+            cachLyModel.setSoPhongCL(jTFSoPhongCL.getText().trim());
+            cachLyModel.setSoGiuongCL(jTFSoGiuongCL.getText().trim());
+            cachLyModel.setTenNgCungPhCL(jTFTenNguoiCungPhongCL.getText().trim());
+
+            // --- test covid ---
+            testCovidModel.setLanTest(Integer.valueOf(jTFLanTest.getText().trim()));
+            // date
+            testCovidModel.setNgayTestStr(dateFormat.format(jDateCNgayTest.getDate()));
+            testCovidModel.setNgayTest(jDateCNgayTest.getDate());
+            // combobox
+            testCovidModel.setHinhThucTest(jCoBoxHinhThucTest.getSelectedIndex());
+            testCovidModel.setKetQuaTest(jCoBoxKetQuaTest.getSelectedIndex());
+            testCovidModel.setDiaDiemTest(jTFDiaDiemTest.getText().trim());
+
+            try {
+                if (editCachLyController.editCachLy(IDNhanKhau, cachLyModel)) {
+                    // xóa trước các bảng nếu có
+                    // Bắt đầu xóa !!!
+                    try {
+                        if (editCachLyController.removeOneTest(testCovidModel.getLanTest(), testCovidModel.getIDNhanKhau())) {
+
+                        } else {
+//                            JOptionPane.showMessageDialog(rootPane, "Not delete one test!", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the dichTe's id (Number) !", "Dich Te Id Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    // them moi lai lan nua
+                    addCachLyController.addTestCovid(testCovidModel);
+                    JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công!", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Lỗi. Không chỉnh sửa được !", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the person fields number !", "Person Fields Type Number Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }
+
+    // check các giá trị nhập vào form
+    private boolean validateValueInForm() {
+        // check null
+        if (jTFLanTest.getText().trim().isEmpty()
+                || jTFDiaDiemTest.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập hết các trường bắt buộc", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        // kiểm tra lựa chọn loại cách ly
+        if (jCoBoxLoaiCL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Loại cách ly\"", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        // kiểm tra lựa chọn mức độ cách ly
+        if (jCoBoxMucDoCL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Mức độ\"", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        // kiểm tra lựa chọn hình thức test
+        if (jCoBoxHinhThucTest.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Hình thức test\"", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        // kiểm tra lựa chọn kết quả test
+        if (jCoBoxKetQuaTest.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Kết quả test\"", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn đóng không ?", "Xác nhận thao tác", JOptionPane.YES_NO_OPTION) == 0) {
@@ -1164,8 +1268,8 @@ public class EditCachLy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAddCachLy;
     private javax.swing.JButton jButtonCancel;
+    private javax.swing.JButton jButtonEditCachLy;
     private javax.swing.JButton jButtonShowInfoTest;
     private javax.swing.JComboBox<String> jCoBoxGioiTinh;
     private javax.swing.JComboBox<String> jCoBoxHinhThucTest;

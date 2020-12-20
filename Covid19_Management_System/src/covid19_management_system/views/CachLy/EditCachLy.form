@@ -628,7 +628,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="1057" max="32767" attributes="0"/>
-                          <Component id="jButtonAddCachLy" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonEditCachLy" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButtonCancel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -641,7 +641,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButtonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButtonAddCachLy" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonEditCachLy" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -649,12 +649,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButtonAddCachLy">
+                <Component class="javax.swing.JButton" name="jButtonEditCachLy">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="EDIT"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddCachLyActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditCachLyActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonCancel">

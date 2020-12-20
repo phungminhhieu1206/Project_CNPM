@@ -364,12 +364,12 @@ public class DichTeManage extends javax.swing.JFrame {
         temp.setLocationRelativeTo(null);
         temp.setResizable(false);
         temp.setVisible(true);
-        
+
         temp.getjButtonAddDichTe().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 temp.addNewDichTe();
-                
+
                 settingTableShowDichTe();
                 showTableDichTeController.showDichTe(jTableKhaiDichTe);
             }
@@ -377,15 +377,25 @@ public class DichTeManage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddDichTeActionPerformed
 
     private void jButtonEditDichTeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditDichTeActionPerformed
-        if (jTFSearchByCMT.getText().isEmpty()){
+        if (jTFSearchByCMT.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Chọn khai báo dịch tễ muốn chỉnh sửa", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             String chungMinhThu = jTFSearchByCMT.getText().trim();
-            EditDichTe editDichTe = new EditDichTe(chungMinhThu);
-            editDichTe.setSize(1188, 628);
-            editDichTe.setLocationRelativeTo(null);
-            editDichTe.setResizable(false);
-            editDichTe.setVisible(true);
+            EditDichTe temp = new EditDichTe(chungMinhThu);
+            temp.setSize(1188, 628);
+            temp.setLocationRelativeTo(null);
+            temp.setResizable(false);
+            temp.setVisible(true);
+
+            temp.getjButtonEditDichTe().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    temp.editDichTe();
+
+                    settingTableShowDichTe();
+                    showTableDichTeController.showDichTe(jTableKhaiDichTe);
+                }
+            });
         }
     }//GEN-LAST:event_jButtonEditDichTeActionPerformed
 

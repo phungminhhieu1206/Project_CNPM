@@ -383,10 +383,20 @@ public class CachLyManage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Chọn khai báo cách ly muốn chỉnh sửa", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             String chungMinhThu = jTFSearchByCMT.getText().trim();
-            EditCachLy editCachLy = new EditCachLy(chungMinhThu);
-            editCachLy.setLocationRelativeTo(null);
-            editCachLy.setResizable(false);
-            editCachLy.setVisible(true);
+            EditCachLy temp = new EditCachLy(chungMinhThu);
+            temp.setLocationRelativeTo(null);
+            temp.setResizable(false);
+            temp.setVisible(true);
+
+            temp.getjButtonEditCachLy().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    temp.editCachLy();
+
+                    settingTableShowCachLy();
+                    showTableCachLyController.showCachLy(jTableKhaiCachLy);
+                }
+            });
         }
     }//GEN-LAST:event_jButtonEditCachLyActionPerformed
 
