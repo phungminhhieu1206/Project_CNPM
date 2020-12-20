@@ -381,6 +381,7 @@ public class DichTeManage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Chọn khai báo dịch tễ muốn chỉnh sửa", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
             String chungMinhThu = jTFSearchByCMT.getText().trim();
+            jTFSearchByCMT.setText("");
             EditDichTe temp = new EditDichTe(chungMinhThu);
             temp.setSize(1188, 628);
             temp.setLocationRelativeTo(null);
@@ -412,6 +413,7 @@ public class DichTeManage extends javax.swing.JFrame {
                     deleteDichTeController.removeTrieuChung(ID);
                     deleteDichTeController.removeBenh(ID);
                     JOptionPane.showMessageDialog(rootPane, "Successfully !", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+                    jTFSearchByCMT.setText("");
                     this.settingTableShowDichTe();
                     showTableDichTeController.showDichTe(jTableKhaiDichTe);
 

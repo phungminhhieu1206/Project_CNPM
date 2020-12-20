@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -39,7 +40,7 @@ public class EditNhanKhau extends javax.swing.JFrame {
         initComponents();
         this.chungMinhThu = chungMinhThu;
         this.setTitle("Chỉnh sửa thông tin nhân khẩu có CMT: " + this.chungMinhThu);
-        
+
         // create a button group for the radioButtons
         checkBHYT.add(jRadioBHYT_YES);
         checkBHYT.add(jRadioBHYT_NO);
@@ -84,7 +85,7 @@ public class EditNhanKhau extends javax.swing.JFrame {
         } else if (nhanKhauModel.getCheckBHYT() == 0) {
             jRadioBHYT_NO.setSelected(true);
         }
-        
+
         this.maTheBHYT = nhanKhauModel.getMaTheBHYT().trim();
         jTFMaTheBHYT.setText(this.maTheBHYT);
         jTFMaHoKhau.setText(nhanKhauModel.getMaHoKhau().trim());
@@ -791,6 +792,10 @@ public class EditNhanKhau extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonEditNhanKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditNhanKhauActionPerformed
+
+    }//GEN-LAST:event_jButtonEditNhanKhauActionPerformed
+
+    public void editNhanKhau() {
         int ID = 0;
         ID = editNhanKhauController.searchIDFromCMT(chungMinhThu);
 
@@ -824,17 +829,25 @@ public class EditNhanKhau extends javax.swing.JFrame {
 
             try {
                 if (editNhanKhauController.editNhanKhau(ID, nhanKhauModel)) {
-                    JOptionPane.showMessageDialog(rootPane, "New person added successfully !", "Add Person", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Successfully !", "Infomation", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Person not added !", "Add Person Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Fail !", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the person fields number !", "Person Fields Type Number Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jButtonEditNhanKhauActionPerformed
+    }
+
+    public JButton getjButtonEditNhanKhau() {
+        return jButtonEditNhanKhau;
+    }
+
+    public void setjButtonEditNhanKhau(JButton jButtonEditNhanKhau) {
+        this.jButtonEditNhanKhau = jButtonEditNhanKhau;
+    }
 
     // check cac gia tri duoc nhap vao form
     private boolean validateValueInForm() {
@@ -896,41 +909,6 @@ public class EditNhanKhau extends javax.swing.JFrame {
 
     public void setjRadioBHYT_YES(JRadioButton jRadioBHYT_YES) {
         this.jRadioBHYT_YES = jRadioBHYT_YES;
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-//                new EditNhanKhau().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

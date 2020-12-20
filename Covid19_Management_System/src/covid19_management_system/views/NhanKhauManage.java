@@ -36,6 +36,17 @@ public class NhanKhauManage extends javax.swing.JFrame {
     ShowTableNhanKhauController showTableNhanKhauController = new ShowTableNhanKhauController();
     DeleteNhanKhauController deleteNhanKhauController = new DeleteNhanKhauController();
 
+    public boolean isClose() {
+        return close;
+    }
+
+    public void setClose(boolean close) {
+        this.close = close;
+    }
+
+    
+    private boolean close = false;
+
     public NhanKhauManage() {
         initComponents();
         this.setTitle("Quản lý nhân khẩu");
@@ -52,6 +63,7 @@ public class NhanKhauManage extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn đóng không ?", "Xác nhận thao tác", JOptionPane.YES_NO_OPTION) == 0) {
+                    setClose(true);
                     dispose();
                 }
             }
@@ -404,6 +416,16 @@ public class NhanKhauManage extends javax.swing.JFrame {
             if (temp.getjRadioBHYT_NO().isSelected()) {
                 temp.getjTFMaTheBHYT().setEnabled(false);
             }
+            
+            temp.getjButtonEditNhanKhau().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                temp.editNhanKhau();
+                
+                settingTableShowNhanKhau();
+                showTableNhanKhauController.showNhanKhau(jTableNhanKhau);
+            }
+        });
         }
     }//GEN-LAST:event_jButtonSuaNhanKhauActionPerformed
 
@@ -417,12 +439,12 @@ public class NhanKhauManage extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa không ?", "Xác nhận thao tác", JOptionPane.YES_NO_OPTION) == 0) {
                 // xóa
                 if (deleteNhanKhauController.deleteNhanKhau(ID)) {
-                    JOptionPane.showMessageDialog(rootPane, "Person deleted successfully !", "Remove Person", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Successfully !", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+                    
                     this.settingTableShowNhanKhau();
                     showTableNhanKhauController.showNhanKhau(jTableNhanKhau);
-
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Person not deleted !", "Remove Person Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Fail !", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {

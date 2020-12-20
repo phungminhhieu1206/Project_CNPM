@@ -51,6 +51,9 @@ public class AddCachLyController {
     }
     
     public boolean addTestCovid(TestCovidModel temp) {
+        if (temp.getLanTest() == 0) {
+            return false;
+        }
         TestCovidModel testCovidModel = new TestCovidModel();
         testCovidModel = temp;
         

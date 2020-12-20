@@ -264,11 +264,6 @@ public class EditCachLy extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jCoBoxKetQuaTest = new javax.swing.JComboBox<>();
         jButtonShowInfoTest = new javax.swing.JButton();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -561,7 +556,7 @@ public class EditCachLy extends javax.swing.JFrame {
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                .addContainerGap(1057, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonEditCachLy)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonCancel)
@@ -813,6 +808,11 @@ public class EditCachLy extends javax.swing.JFrame {
         jLabel22.setText("Lần test:");
 
         jTFLanTest.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTFLanTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFLanTestActionPerformed(evt);
+            }
+        });
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel23.setText("Ngày test");
@@ -839,26 +839,6 @@ public class EditCachLy extends javax.swing.JFrame {
         jButtonShowInfoTest.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonShowInfoTest.setText("HIỆN CÁC LẦN TEST");
 
-        jLabel34.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel34.setText("(*)");
-
-        jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel35.setText("(*)");
-
-        jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel36.setText("(*)");
-
-        jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel37.setText("(*)");
-
-        jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel38.setText("(*)");
-
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -868,7 +848,7 @@ public class EditCachLy extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel26)
@@ -877,15 +857,9 @@ public class EditCachLy extends javax.swing.JFrame {
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel12Layout.createSequentialGroup()
                                         .addComponent(jCoBoxKetQuaTest, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel37)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButtonShowInfoTest))
-                                    .addGroup(jPanel12Layout.createSequentialGroup()
-                                        .addComponent(jTFDiaDiemTest, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel38)))
-                                .addContainerGap(35, Short.MAX_VALUE))
+                                    .addComponent(jTFDiaDiemTest)))
                             .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel12Layout.createSequentialGroup()
@@ -897,56 +871,46 @@ public class EditCachLy extends javax.swing.JFrame {
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel12Layout.createSequentialGroup()
                                         .addComponent(jCoBoxHinhThucTest, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel36))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel12Layout.createSequentialGroup()
-                                        .addComponent(jLabel34)
-                                        .addGap(5, 5, 5)
+                                        .addGap(20, 20, 20)
                                         .addComponent(jLabel23)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jDateCNgayTest, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel35)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(jDateCNgayTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addComponent(jLabel21))
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateCNgayTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTFLanTest)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTFLanTest)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jDateCNgayTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCoBoxHinhThucTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jCoBoxHinhThucTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTFDiaDiemTest)
-                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCoBoxKetQuaTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jButtonShowInfoTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)))
+                    .addComponent(jTFDiaDiemTest))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCoBoxKetQuaTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonShowInfoTest, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -956,10 +920,8 @@ public class EditCachLy extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -978,9 +940,9 @@ public class EditCachLy extends javax.swing.JFrame {
                             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 12, Short.MAX_VALUE))))
+                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1127,20 +1089,45 @@ public class EditCachLy extends javax.swing.JFrame {
             // date
             cachLyModel.setNgayBatDauCLStr(dateFormat.format(jDateCNgayBatDauCL.getDate()));
             cachLyModel.setNgayBatDauCL(jDateCNgayBatDauCL.getDate());
-            cachLyModel.setDiaChiCL(jTFDiaDiemCL.getText().trim());
-            cachLyModel.setSoPhongCL(jTFSoPhongCL.getText().trim());
-            cachLyModel.setSoGiuongCL(jTFSoGiuongCL.getText().trim());
-            cachLyModel.setTenNgCungPhCL(jTFTenNguoiCungPhongCL.getText().trim());
+
+            if (!jTFDiaDiemCL.getText().isEmpty()) {
+                cachLyModel.setDiaChiCL(jTFDiaDiemCL.getText().trim());
+            } else {
+                cachLyModel.setDiaChiCL("");
+            }
+            if (!jTFSoPhongCL.getText().isEmpty()) {
+                cachLyModel.setSoPhongCL(jTFSoPhongCL.getText().trim());
+            } else {
+                cachLyModel.setSoPhongCL("");
+            }
+            if (!jTFSoGiuongCL.getText().isEmpty()) {
+                cachLyModel.setSoGiuongCL(jTFSoGiuongCL.getText().trim());
+            } else {
+                cachLyModel.setSoGiuongCL("");
+            }
+            if (!jTFTenNguoiCungPhongCL.getText().isEmpty()) {
+                cachLyModel.setTenNgCungPhCL(jTFTenNguoiCungPhongCL.getText().trim());
+            } else {
+                cachLyModel.setTenNgCungPhCL("");
+            }
 
             // --- test covid ---
-            testCovidModel.setLanTest(Integer.valueOf(jTFLanTest.getText().trim()));
+            if (!jTFLanTest.getText().isEmpty()) {
+                testCovidModel.setLanTest(Integer.valueOf(jTFLanTest.getText().trim()));
+            } else {
+                testCovidModel.setLanTest(0);
+            }
             // date
             testCovidModel.setNgayTestStr(dateFormat.format(jDateCNgayTest.getDate()));
             testCovidModel.setNgayTest(jDateCNgayTest.getDate());
             // combobox
             testCovidModel.setHinhThucTest(jCoBoxHinhThucTest.getSelectedIndex());
             testCovidModel.setKetQuaTest(jCoBoxKetQuaTest.getSelectedIndex());
-            testCovidModel.setDiaDiemTest(jTFDiaDiemTest.getText().trim());
+            if (!jTFDiaDiemTest.getText().isEmpty()) {
+                testCovidModel.setDiaDiemTest(jTFDiaDiemTest.getText().trim());
+            } else {
+                testCovidModel.setDiaDiemTest("");
+            }
 
             try {
                 if (editCachLyController.editCachLy(IDNhanKhau, cachLyModel)) {
@@ -1157,7 +1144,11 @@ public class EditCachLy extends javax.swing.JFrame {
                     }
 
                     // them moi lai lan nua
-                    addCachLyController.addTestCovid(testCovidModel);
+                    if (addCachLyController.addTestCovid(testCovidModel)) {
+
+                    } else {
+
+                    }
                     JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công!", "Infomation", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                 } else {
@@ -1172,12 +1163,12 @@ public class EditCachLy extends javax.swing.JFrame {
 
     // check các giá trị nhập vào form
     private boolean validateValueInForm() {
-        // check null
-        if (jTFLanTest.getText().trim().isEmpty()
-                || jTFDiaDiemTest.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập hết các trường bắt buộc", "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
+//        // check null
+//        if (jTFLanTest.getText().trim().isEmpty()
+//                || jTFDiaDiemTest.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập hết các trường bắt buộc", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return false;
+//        }
         // kiểm tra lựa chọn loại cách ly
         if (jCoBoxLoaiCL.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Loại cách ly\"", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -1188,16 +1179,16 @@ public class EditCachLy extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Mức độ\"", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        // kiểm tra lựa chọn hình thức test
-        if (jCoBoxHinhThucTest.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Hình thức test\"", "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        // kiểm tra lựa chọn kết quả test
-        if (jCoBoxKetQuaTest.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Kết quả test\"", "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
+//        // kiểm tra lựa chọn hình thức test
+//        if (jCoBoxHinhThucTest.getSelectedIndex() == 0) {
+//            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Hình thức test\"", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return false;
+//        }
+//        // kiểm tra lựa chọn kết quả test
+//        if (jCoBoxKetQuaTest.getSelectedIndex() == 0) {
+//            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn mục: \"Kết quả test\"", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return false;
+//        }
         return true;
     }
 
@@ -1218,6 +1209,10 @@ public class EditCachLy extends javax.swing.JFrame {
             return;
         }
     }//GEN-LAST:event_jCoBoxLoaiCLActionPerformed
+
+    private void jTFLanTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFLanTestActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFLanTestActionPerformed
 
     public void clearCLTapTrungFields() {
         jTFDiaDiemCL.setText(null);
@@ -1305,11 +1300,6 @@ public class EditCachLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
