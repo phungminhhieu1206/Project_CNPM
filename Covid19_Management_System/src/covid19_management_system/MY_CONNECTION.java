@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * @author HieuPhung
  * @author HieuPhung
  */
 public class MY_CONNECTION {
