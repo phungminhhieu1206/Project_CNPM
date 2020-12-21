@@ -69,7 +69,29 @@ public class DichTe {
         }
         
     }
-    
+    /*  public boolean addTrieuChung(int idPerson, int trieuChung) {
+
+        PreparedStatement ps;
+        String addQuery = "INSERT INTO `khai_trieu_chung`(`id_person`, `trieu_chung`) VALUES (?,?)";
+        
+        try {
+            // add client on mysql database
+            ps = my_connection.createConnection().prepareStatement(addQuery);
+            
+            // theo thu tu dau ?
+            ps.setInt(1, idPerson);
+            ps.setInt(2, trieuChung);
+            
+            return (ps.executeUpdate() > 0);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Person.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
+    */
     public boolean addBenh(int idPerson, int idBenh) {
 
         PreparedStatement ps;

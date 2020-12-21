@@ -49,7 +49,38 @@ public class AddCachLyController {
             return false;
         }  
     }
+    /*public class AddCachLyController {
+    MY_CONNECTION my_connection = new MY_CONNECTION();
     
+    public boolean addCachLy(CachLyModel temp) {
+        CachLyModel cachLyModel = new CachLyModel();
+        cachLyModel = temp;
+        
+        PreparedStatement preparedStatement;
+        String query = "INSERT INTO `cach_ly`(`IDNhanKhau`, `ngayKhaiCL`, `loaiCL`, `mucDoCL`, `ngayBatDauCL`, `diaChiCL`, `soPhongCL`, `soGiuongCL`, `tenNgCungPhCL`) VALUES (?,?,?,?,?,?,?,?,?)";
+        try {
+            preparedStatement = my_connection.createConnection().prepareStatement(query);
+            
+            preparedStatement.setInt(1, cachLyModel.getIDNhanKhau());
+            //date
+            java.sql.Date ngayKhaiCL = new java.sql.Date(cachLyModel.getNgayKhaiCL().getTime());
+            preparedStatement.setDate(2, ngayKhaiCL);
+            preparedStatement.setInt(3, cachLyModel.getLoaiCL());
+            preparedStatement.setInt(4, cachLyModel.getMucDoCL());
+            //date
+            java.sql.Date ngayBatDauCL = new java.sql.Date(cachLyModel.getNgayBatDauCL().getTime());
+            preparedStatement.setDate(5, ngayBatDauCL);
+            preparedStatement.setString(6, cachLyModel.getDiaChiCL());
+            preparedStatement.setString(7, cachLyModel.getSoGiuongCL());
+            preparedStatement.setString(8, cachLyModel.getSoGiuongCL());
+            preparedStatement.setString(9, cachLyModel.getTenNgCungPhCL());
+            
+            return (preparedStatement.executeUpdate() > 0);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddCachLyController.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }  
+    }*/
     public boolean addTestCovid(TestCovidModel temp) {
         if (temp.getLanTest() == 0) {
             return false;
