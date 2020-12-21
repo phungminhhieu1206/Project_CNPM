@@ -5,7 +5,7 @@
  */
 package covid19_management_system.forms.show;
 
-import covid19_management_system.entity.ShowTable;
+import covid19_management_system.entity.ShowTableDichTe;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Show_Person_Form extends javax.swing.JFrame {
     /**
      * Creates new form Show_Person_Form
      */
-    ShowTable showTable = new ShowTable();
+    ShowTableDichTe showTable = new ShowTableDichTe();
     
     public Show_Person_Form() {
         initComponents();

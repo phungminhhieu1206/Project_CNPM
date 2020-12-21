@@ -13,11 +13,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author winwin.thathang
+ * @author HieuPhung
  */
-public class ShowTable {
+public class ShowTableDichTe {
     
     MY_CONNECTION my_connection = new MY_CONNECTION();
     
@@ -58,9 +59,8 @@ public class ShowTable {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ShowTable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowTableDichTe.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
     }
     
     
