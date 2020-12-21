@@ -17,7 +17,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * @author HieuPhung
  * @author HieuPhung
  */
 public class ShowTableDichTeController {
