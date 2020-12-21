@@ -6,7 +6,7 @@
 package covid19_management_system.forms.input;
 
 import covid19_management_system.MY_CONNECTION;
-import covid19_management_system.entity.CachLy;
+
 import covid19_management_system.entity.Person;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +29,7 @@ public class CachLyForm extends javax.swing.JFrame {
      * Creates new form CachLy
      */
     Person person = new Person();
-    CachLy cachLy = new CachLy();
+//    CachLy cachLy = new CachLy();
     MY_CONNECTION my_connection = new MY_CONNECTION();
     ButtonGroup bgBHYT = new ButtonGroup();
 
@@ -871,14 +871,14 @@ public class CachLyForm extends javax.swing.JFrame {
             String addressTest = jTextFieldTestAddress.getText();
             int resultTest = jComboBoxTestResult.getSelectedIndex();
 
-            if (cachLy.addCachLy(idPerson, ngayKhaiCL, type, level, dateStart, addressCL, roomN, bedN, nameRoommate)) {
-                cachLy.addTestCovid(idPerson, dateTest, timeTest, formTest, addressTest, resultTest);
-                JOptionPane.showMessageDialog(rootPane, "New Cach Ly added successfully !", "Add Cach Ly", JOptionPane.INFORMATION_MESSAGE);
-                this.clearFiles();
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Cach Ly Form not added !", "Add Cach Ly Error", JOptionPane.ERROR_MESSAGE);
-            }
+//            if (cachLy.addCachLy(idPerson, ngayKhaiCL, type, level, dateStart, addressCL, roomN, bedN, nameRoommate)) {
+//                cachLy.addTestCovid(idPerson, dateTest, timeTest, formTest, addressTest, resultTest);
+//                JOptionPane.showMessageDialog(rootPane, "New Cach Ly added successfully !", "Add Cach Ly", JOptionPane.INFORMATION_MESSAGE);
+//                this.clearFiles();
+//
+//            } else {
+//                JOptionPane.showMessageDialog(rootPane, "Cach Ly Form not added !", "Add Cach Ly Error", JOptionPane.ERROR_MESSAGE);
+//            }
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter fields number !", "Fields Type Number Error", JOptionPane.ERROR_MESSAGE);
@@ -1016,15 +1016,15 @@ public class CachLyForm extends javax.swing.JFrame {
         // Bắt đầu xóa !!!
         try {
 
-            // trong check if duoi, da co edit database !!!
-            if (cachLy.removeCachLy(idCachLy)) {
-                cachLy.removeTest(idPerson);
-                JOptionPane.showMessageDialog(rootPane, "Cach Ly deleted successfully !", "Remove Khai Bao Cach Ly", JOptionPane.INFORMATION_MESSAGE);
-                this.clearFiles();
-                
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Cach Ly not deleted !", "Remove Cach Ly Error", JOptionPane.ERROR_MESSAGE);
-            }
+//            // trong check if duoi, da co edit database !!!
+//            if (cachLy.removeCachLy(idCachLy)) {
+//                cachLy.removeTest(idPerson);
+//                JOptionPane.showMessageDialog(rootPane, "Cach Ly deleted successfully !", "Remove Khai Bao Cach Ly", JOptionPane.INFORMATION_MESSAGE);
+//                this.clearFiles();
+//                
+//            } else {
+//                JOptionPane.showMessageDialog(rootPane, "Cach Ly not deleted !", "Remove Cach Ly Error", JOptionPane.ERROR_MESSAGE);
+//            }
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the cachLy's id (Number) !", "Cach Ly Id Error", JOptionPane.ERROR_MESSAGE);
@@ -1086,13 +1086,13 @@ public class CachLyForm extends javax.swing.JFrame {
             
             try {
                 // trong check if duoi, da co edit database !!!
-                if (cachLy.removeOneTest(timeTest)) {
-//                    JOptionPane.showMessageDialog(rootPane, "Dich Te deleted successfully !", "Remove Khai Bao DichTe", JOptionPane.INFORMATION_MESSAGE);
-//                    this.clearFiles();
-
-                } else {
-//                    JOptionPane.showMessageDialog(rootPane, "Dich Te not deleted !", "Remove Dich Te Error", JOptionPane.ERROR_MESSAGE);
-                }
+//                if (cachLy.removeOneTest(timeTest)) {
+////                    JOptionPane.showMessageDialog(rootPane, "Dich Te deleted successfully !", "Remove Khai Bao DichTe", JOptionPane.INFORMATION_MESSAGE);
+////                    this.clearFiles();
+//
+//                } else {
+////                    JOptionPane.showMessageDialog(rootPane, "Dich Te not deleted !", "Remove Dich Te Error", JOptionPane.ERROR_MESSAGE);
+//                }
 
             } catch (NumberFormatException ex) {
 //                JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the dichTe's id (Number) !", "Dich Te Id Error", JOptionPane.ERROR_MESSAGE);
@@ -1100,16 +1100,16 @@ public class CachLyForm extends javax.swing.JFrame {
             
             // delete bảng test
 
-            // edit
-            if (cachLy.editCachLy(idPerson, ngayKhaiCL, type, level, dateStart, addressCL, roomN, bedN, nameRoommate)) {
-                // thêm mới
-                cachLy.addTestCovid(idPerson, dateTest, timeTest, formTest, addressTest, resultTest);
-                JOptionPane.showMessageDialog(rootPane, "Dich Te update successfully !", "Update Dich Te", JOptionPane.INFORMATION_MESSAGE);
-                this.clearFiles();
-                
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Dich Te Form not updated !", "Update Dich Te Error", JOptionPane.ERROR_MESSAGE);
-            }
+//            // edit
+//            if (cachLy.editCachLy(idPerson, ngayKhaiCL, type, level, dateStart, addressCL, roomN, bedN, nameRoommate)) {
+//                // thêm mới
+//                cachLy.addTestCovid(idPerson, dateTest, timeTest, formTest, addressTest, resultTest);
+//                JOptionPane.showMessageDialog(rootPane, "Dich Te update successfully !", "Update Dich Te", JOptionPane.INFORMATION_MESSAGE);
+//                this.clearFiles();
+//                
+//            } else {
+//                JOptionPane.showMessageDialog(rootPane, "Dich Te Form not updated !", "Update Dich Te Error", JOptionPane.ERROR_MESSAGE);
+//            }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter fields number !", "Fields Type Number Error", JOptionPane.ERROR_MESSAGE);
         }
