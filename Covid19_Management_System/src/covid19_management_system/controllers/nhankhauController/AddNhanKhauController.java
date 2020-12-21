@@ -13,10 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author HieuPhung
- */
+// dieu khien them nhan khau
 public class AddNhanKhauController {
     MY_CONNECTION my_connection = new MY_CONNECTION();
     
@@ -54,7 +51,7 @@ public class AddNhanKhauController {
             return false;
         }  
     }
-    
+    // phương thuc kiem tra chung minh thu
     public boolean equalCMT(String temp) {
         String chungMinhThu = temp.trim();
         
