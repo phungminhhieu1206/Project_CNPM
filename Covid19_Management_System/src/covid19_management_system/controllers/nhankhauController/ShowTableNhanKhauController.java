@@ -26,10 +26,10 @@ public class ShowTableNhanKhauController {
 
     MY_CONNECTION my_connection = new MY_CONNECTION();
 
-    public void showNhanKhau(JTable table) {
+    public void showNhanKhauWithStr(JTable table, String temp) {
         PreparedStatement preparedStatement;
         ResultSet resultSet;
-        String query = "SELECT `ID`, `chungMinhThu`, `hoTen`, `ngaySinh`, `gioiTinh`, `diaChi`, `soDienThoai` FROM `nhan_khau` WHERE 1";
+        String query = temp.trim();
         try {
             preparedStatement = my_connection.createConnection().prepareStatement(query);
             resultSet = preparedStatement.executeQuery();

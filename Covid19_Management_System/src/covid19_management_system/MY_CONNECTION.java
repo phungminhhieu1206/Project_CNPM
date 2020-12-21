@@ -18,9 +18,10 @@ import java.util.logging.Logger;
 public class MY_CONNECTION {
     
     // create function to connect with mysql
+    private Connection connection = null;
     public Connection createConnection() {
         
-        Connection connection = null;
+//        Connection connection = null;
         
         MysqlDataSource mds = new MysqlDataSource();
         
@@ -38,6 +39,14 @@ public class MY_CONNECTION {
         
         return connection;
         
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
     }
     
 }

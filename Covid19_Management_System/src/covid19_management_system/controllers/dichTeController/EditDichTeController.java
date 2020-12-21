@@ -84,7 +84,11 @@ public class EditDichTeController {
             preparedStatement.setInt(3, dichTeModel.getTuVungDich());
             preparedStatement.setInt(4, ID);
             
-            return (preparedStatement.executeUpdate() > 0);
+//            return (preparedStatement.executeUpdate() > 0);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            my_connection.getConnection().close();
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(EditDichTeController.class.getName()).log(Level.SEVERE, null, ex);
             return false;

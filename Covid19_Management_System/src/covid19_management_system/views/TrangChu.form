@@ -191,6 +191,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="TH&#x1ed0;NG K&#xca;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonThongKeActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -584,26 +587,41 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="XEM"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTuVungDichActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonTxCovid">
               <Properties>
                 <Property name="text" type="java.lang.String" value="XEM"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTxCovidActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonMacCovid">
               <Properties>
                 <Property name="text" type="java.lang.String" value="XEM"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMacCovidActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonCLTaiNha">
               <Properties>
                 <Property name="text" type="java.lang.String" value="XEM"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCLTaiNhaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonCLTapTrung">
               <Properties>
                 <Property name="text" type="java.lang.String" value="XEM"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCLTapTrungActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonDaKhaiBao">
               <Properties>

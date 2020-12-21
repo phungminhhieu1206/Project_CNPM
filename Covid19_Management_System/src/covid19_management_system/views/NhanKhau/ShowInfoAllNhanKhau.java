@@ -11,6 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -20,9 +21,42 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author HieuPhung
  */
-
-
 public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ShowInfoAllNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ShowInfoAllNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ShowInfoAllNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ShowInfoAllNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ShowInfoAllNhanKhau().setVisible(true);
+            }
+        });
+    }
 
     public JTable getjTableNhanKhau() {
         return jTableNhanKhau;
@@ -53,6 +87,14 @@ public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
      */
     AddDichTe addDichTe = new AddDichTe();
     ShowTableNhanKhauController showTableNhanKhauController = new ShowTableNhanKhauController();
+
+    public ShowTableNhanKhauController getShowTableNhanKhauController() {
+        return showTableNhanKhauController;
+    }
+
+    public void setShowTableNhanKhauController(ShowTableNhanKhauController showTableNhanKhauController) {
+        this.showTableNhanKhauController = showTableNhanKhauController;
+    }
     private String chungMinhThu;
 
     public String getChungMinhThu() {
@@ -62,13 +104,12 @@ public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
     public void setChungMinhThu(String chungMinhThu) {
         this.chungMinhThu = chungMinhThu;
     }
+
     public ShowInfoAllNhanKhau() {
         initComponents();
-        this.setTitle("Thông tin các nhân khẩu trong tổ dân phố");
-        
+
         this.settingTableShowNhanKhau();
-        showTableNhanKhauController.showNhanKhau(jTableNhanKhau);
-        
+
         // confirm de thuc hien dong
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -80,8 +121,16 @@ public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void settingTableShowNhanKhau(){
+
+    public JLabel getjLabelTitle() {
+        return jLabelTitle;
+    }
+
+    public void setjLabelTitle(JLabel jLabelTitle) {
+        this.jLabelTitle = jLabelTitle;
+    }
+
+    public void settingTableShowNhanKhau() {
         jTableNhanKhau.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
         jTableNhanKhau.getColumnModel().getColumn(0).setPreferredWidth(5);
         jTableNhanKhau.getColumnModel().getColumn(1).setPreferredWidth(70);
@@ -103,7 +152,7 @@ public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTitle = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableNhanKhau = new javax.swing.JTable();
@@ -116,8 +165,8 @@ public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("CÁC NHÂN KHẨU ĐÃ KHAI BÁO");
+        jLabelTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelTitle.setText("CÁC NHÂN KHẨU ĐÃ KHAI BÁO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -125,14 +174,14 @@ public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(293, 293, 293)
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitle)
                 .addContainerGap(308, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -279,8 +328,8 @@ public class ShowInfoAllNhanKhau extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCHOOSE;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

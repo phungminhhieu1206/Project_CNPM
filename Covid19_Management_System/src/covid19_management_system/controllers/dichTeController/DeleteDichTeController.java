@@ -16,48 +16,71 @@ import java.util.logging.Logger;
  * @author HieuPhung
  */
 public class DeleteDichTeController {
+
     MY_CONNECTION my_connection = new MY_CONNECTION();
-    
-    public boolean removeDichTe(int idNhanKhau) {
+
+    public boolean removeDichTe(int idNhanKhau) throws SQLException {
         PreparedStatement ps;
         String deleteQuery = "DELETE FROM `dich_te` WHERE `id_person`=?";
         try {
             ps = my_connection.createConnection().prepareStatement(deleteQuery);
             ps.setInt(1, idNhanKhau);
-            
-            return (ps.executeUpdate() > 0);
+
+            if (ps.executeUpdate() > 0) {
+                ps.close();
+                my_connection.getConnection().close();
+                return true;
+            };
         } catch (SQLException ex) {
             Logger.getLogger(DeleteDichTeController.class.getName()).log(Level.SEVERE, null, ex);
+            my_connection.getConnection().close();
             return false;
         }
+        return false;
     }
-    
-    public boolean removeTrieuChung(int idNhanKhau) {
+
+    public boolean removeTrieuChung(int idNhanKhau) throws SQLException {
         PreparedStatement ps;
         String deleteQuery = "DELETE FROM `khai_trieu_chung` WHERE `id_person`=?";
         try {
             ps = my_connection.createConnection().prepareStatement(deleteQuery);
             ps.setInt(1, idNhanKhau);
-            
-            return (ps.executeUpdate() > 0);
+
+//            return (ps.executeUpdate() > 0);
+            if (ps.executeUpdate() > 0) {
+                ps.close();
+                my_connection.getConnection().close();
+                return true;
+            };
+
         } catch (SQLException ex) {
             Logger.getLogger(DeleteDichTeController.class.getName()).log(Level.SEVERE, null, ex);
+            my_connection.getConnection().close();
             return false;
         }
+        return false;
     }
-    
-    public boolean removeBenh(int idNhanKhau) {
+
+    public boolean removeBenh(int idNhanKhau) throws SQLException {
         PreparedStatement ps;
         String deleteQuery = "DELETE FROM `khai_benh` WHERE `id_person`=?";
         try {
             ps = my_connection.createConnection().prepareStatement(deleteQuery);
             ps.setInt(1, idNhanKhau);
-            
-            return (ps.executeUpdate() > 0);
+
+//            return (ps.executeUpdate() > 0);
+            if (ps.executeUpdate() > 0) {
+                ps.close();
+                my_connection.getConnection().close();
+                return true;
+            };
+
         } catch (SQLException ex) {
             Logger.getLogger(DeleteDichTeController.class.getName()).log(Level.SEVERE, null, ex);
+            my_connection.getConnection().close();
             return false;
         }
+        return false;
     }
-    
+
 }

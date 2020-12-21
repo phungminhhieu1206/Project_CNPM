@@ -278,7 +278,7 @@ public class EditDichTe extends javax.swing.JFrame {
         }
     }
 
-    public void addTrieuChung(int idPerson) {
+    public void addTrieuChung(int idPerson) throws SQLException {
         if (jCheckBoxTC1.isSelected()) {
             addDichTeController.addTrieuChung(idPerson, 1);
         }
@@ -308,7 +308,7 @@ public class EditDichTe extends javax.swing.JFrame {
         }
     }
 
-    public void addBenh(int idPerson) {
+    public void addBenh(int idPerson) throws SQLException {
         if (jCheckBoxBenh1.isSelected()) {
             addDichTeController.addBenh(idPerson, 1);
         }
@@ -1183,7 +1183,7 @@ public class EditDichTe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonEditDichTeActionPerformed
 
-    public void editDichTe() {
+    public void editDichTe() throws SQLException {
         if (validateValueInForm()) {
             DichTeModel dichTeModel = new DichTeModel();
             dichTeModel.setID_PERSON(this.IDNhanKhau);
@@ -1217,12 +1217,9 @@ public class EditDichTe extends javax.swing.JFrame {
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(rootPane, ex.getMessage() + " - Enter the dichTe's id (Number) !", "Dich Te Id Error", JOptionPane.ERROR_MESSAGE);
                     }
-                    
-                    
 
                     this.addTrieuChung(IDNhanKhau);
                     this.addBenh(IDNhanKhau);
-
                     JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công!", "Infomation", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                 } else {

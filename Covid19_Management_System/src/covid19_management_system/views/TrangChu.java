@@ -7,13 +7,18 @@ package covid19_management_system.views;
 
 import covid19_management_system.controllers.thongKeController.ThongKeController;
 import covid19_management_system.models.ThongKeModel;
+import covid19_management_system.views.NhanKhau.ShowInfoAllNhanKhau;
+import covid19_management_system.views.ThongKe.ThongKeManage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -157,6 +162,11 @@ public class TrangChu extends javax.swing.JFrame {
 
         jButtonThongKe.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButtonThongKe.setText("THỐNG KÊ");
+        jButtonThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThongKeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -259,14 +269,39 @@ public class TrangChu extends javax.swing.JFrame {
         jLabelCLTapTrung.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButtonTuVungDich.setText("XEM");
+        jButtonTuVungDich.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTuVungDichActionPerformed(evt);
+            }
+        });
 
         jButtonTxCovid.setText("XEM");
+        jButtonTxCovid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTxCovidActionPerformed(evt);
+            }
+        });
 
         jButtonMacCovid.setText("XEM");
+        jButtonMacCovid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMacCovidActionPerformed(evt);
+            }
+        });
 
         jButtonCLTaiNha.setText("XEM");
+        jButtonCLTaiNha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCLTaiNhaActionPerformed(evt);
+            }
+        });
 
         jButtonCLTapTrung.setText("XEM");
+        jButtonCLTapTrung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCLTapTrungActionPerformed(evt);
+            }
+        });
 
         jButtonDaKhaiBao.setText("XEM");
 
@@ -455,7 +490,7 @@ public class TrangChu extends javax.swing.JFrame {
         dichTeManage.setLocationRelativeTo(null);
         dichTeManage.setResizable(false);
         dichTeManage.setVisible(true);
-        
+
         dichTeManage.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
                 showThongKe();
@@ -468,7 +503,7 @@ public class TrangChu extends javax.swing.JFrame {
         cachLyManage.setLocationRelativeTo(null);
         cachLyManage.setResizable(false);
         cachLyManage.setVisible(true);
-        
+
         cachLyManage.addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent e) {
                 showThongKe();
@@ -476,7 +511,185 @@ public class TrangChu extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_jButtonCachLyActionPerformed
 
-    
+    private void jButtonTuVungDichActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTuVungDichActionPerformed
+        ShowInfoAllNhanKhau temp = new ShowInfoAllNhanKhau();
+        temp.setLocationRelativeTo(null);
+        temp.setResizable(false);
+        temp.setVisible(true);
+        // sửa
+        temp.setTitle("Liên quan vùng dịch");
+        temp.getjLabelTitle().setText("Các nhân khẩu đi từ vùng dịch về");
+        String query = "SELECT nhan_khau.ID, nhan_khau.chungMinhThu, nhan_khau.hoTen, nhan_khau.ngaySinh, nhan_khau.gioiTinh, nhan_khau.diaChi, nhan_khau.soDienThoai FROM nhan_khau INNER JOIN dich_te ON (nhan_khau.ID = dich_te.id_person) WHERE dich_te.tu_vung_dich = 1";
+        temp.getShowTableNhanKhauController().showNhanKhauWithStr(temp.getjTableNhanKhau(), query.trim());
+
+        temp.getjTableNhanKhau().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DefaultTableModel model = (DefaultTableModel) temp.getjTableNhanKhau().getModel();
+                int rowIndex = temp.getjTableNhanKhau().getSelectedRow();
+                String chungMinhThu = model.getValueAt(rowIndex, 1).toString().trim();
+                temp.getjTFShowCMT().setText(chungMinhThu);
+            }
+        });
+//        temp.getjTFShowCMT().setText(chungMinhThu.trim());
+//        temp.getjButtonCHOOSE().addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                if (temp.getjTFShowCMT().getText().isEmpty()) {
+//                    JOptionPane.showMessageDialog(rootPane, "Lựa chọn nhân khẩu từ bảng trước !", "Warning", JOptionPane.WARNING_MESSAGE);
+//                } else {
+//                    // check cmt đã khai báo dịch tễ hay chưa ?
+//                    int ID;
+//                    ID = editNhanKhauController.searchIDFromCMT(chungMinhThu);
+////                    System.out.println(ID);
+//                    if (showTableDichTeController.checkIdDichTe(ID)) {
+//                        JOptionPane.showMessageDialog(rootPane, "Nhân khẩu có CMT: " + chungMinhThu + " đã khai báo dịch tễ !\nChọn nhân khẩu khác để khai báo dịch tễ.", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+//                    } else {
+//                        jTFChungMinhThu.setText(chungMinhThu.trim());
+//
+//                        temp.dispose();
+//
+//                        if (JOptionPane.showConfirmDialog(null, "Tìm thấy. Có muốn thực hiện khai báo dịch tễ\nvới nhân khẩu có CMT: " + chungMinhThu + " không ?", "Xác nhận thao tác", JOptionPane.YES_NO_OPTION) == 0) {
+//                            NhanKhauModel nhanKhauModel = new NhanKhauModel();
+//                            nhanKhauModel = editNhanKhauController.searchAllInfoNhanKhau(chungMinhThu);
+//                            jTFChungMinhThu.setBackground(Color.GRAY);
+//                            jTFChungMinhThu.setEditable(false);
+//                            jTFHoVaTen.setText(nhanKhauModel.getHoTen().trim());
+//                            jTFHoVaTen.setBackground(Color.gray);
+//                            // date db to form
+//                            try {
+//                                Date dateIn = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(nhanKhauModel.getNgaySinh().toString());
+//                                jDateCNgaySinh.setDate(dateIn);
+//                            } catch (ParseException ex) {
+//                                Logger.getLogger(AddDichTe.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
+//                            // combobox
+//                            jCoBoxGioiTinh.setSelectedIndex(nhanKhauModel.getGioiTinh());
+//                            jTFQuocTich.setText(nhanKhauModel.getQuocTich().trim());
+//                            jTFSoDienThoai.setText(nhanKhauModel.getSoDienThoai().trim());
+//                            jTFEmail.setText(nhanKhauModel.getEmail().trim());
+//                            jTFDiaChi.setText(nhanKhauModel.getDiaChi().trim());
+//                            // radio
+////                            jRadioBHYT_YES.setEnabled(true);
+////                            jRadioBHYT_NO.setEnabled(true);
+//                            if (nhanKhauModel.getCheckBHYT() == 1) {
+//                                jRadioBHYT_YES.setSelected(true);
+//                            } else if (nhanKhauModel.getCheckBHYT() == 0) {
+//                                jRadioBHYT_NO.setSelected(true);
+//                            }
+//                            jTFMaTheBHYT.setText(nhanKhauModel.getMaTheBHYT().trim());
+//                            jRadioBHYT_YES.setEnabled(false);
+//                            jRadioBHYT_NO.setEnabled(false);
+//
+//                            setEnableDichTeFields(true);
+//                        }
+//                    }
+//                }
+//            }
+//        });
+    }//GEN-LAST:event_jButtonTuVungDichActionPerformed
+
+    private void jButtonTxCovidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTxCovidActionPerformed
+        ShowInfoAllNhanKhau temp = new ShowInfoAllNhanKhau();
+        temp.setLocationRelativeTo(null);
+        temp.setResizable(false);
+        temp.setVisible(true);
+        // sửa
+        temp.setTitle("Tiếp xúc với người mắc Covid");
+        temp.getjLabelTitle().setText("Các nhân khẩu tiếp xúc với người mắc Covid");
+        String query = "SELECT nhan_khau.ID, nhan_khau.chungMinhThu, nhan_khau.hoTen, nhan_khau.ngaySinh, nhan_khau.gioiTinh, nhan_khau.diaChi, nhan_khau.soDienThoai FROM nhan_khau INNER JOIN dich_te ON (nhan_khau.ID = dich_te.id_person) WHERE dich_te.tx_benh = 1";
+        temp.getShowTableNhanKhauController().showNhanKhauWithStr(temp.getjTableNhanKhau(), query.trim());
+
+        temp.getjTableNhanKhau().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DefaultTableModel model = (DefaultTableModel) temp.getjTableNhanKhau().getModel();
+                int rowIndex = temp.getjTableNhanKhau().getSelectedRow();
+                String chungMinhThu = model.getValueAt(rowIndex, 1).toString().trim();
+                temp.getjTFShowCMT().setText(chungMinhThu);
+            }
+        });
+    }//GEN-LAST:event_jButtonTxCovidActionPerformed
+
+    private void jButtonMacCovidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMacCovidActionPerformed
+        ShowInfoAllNhanKhau temp = new ShowInfoAllNhanKhau();
+        temp.setLocationRelativeTo(null);
+        temp.setResizable(false);
+        temp.setVisible(true);
+        // sửa
+        temp.setTitle("Trường hợp FO");
+        temp.getjLabelTitle().setText("Các nhân khẩu mắc Covid 19");
+        String query = "SELECT nhan_khau.ID, nhan_khau.chungMinhThu, nhan_khau.hoTen, nhan_khau.ngaySinh, nhan_khau.gioiTinh, nhan_khau.diaChi, nhan_khau.soDienThoai FROM nhan_khau INNER JOIN cach_ly ON (nhan_khau.ID = cach_ly.IDNhanKhau) WHERE cach_ly.mucDoCL = 1";
+        temp.getShowTableNhanKhauController().showNhanKhauWithStr(temp.getjTableNhanKhau(), query.trim());
+
+        temp.getjTableNhanKhau().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DefaultTableModel model = (DefaultTableModel) temp.getjTableNhanKhau().getModel();
+                int rowIndex = temp.getjTableNhanKhau().getSelectedRow();
+                String chungMinhThu = model.getValueAt(rowIndex, 1).toString().trim();
+                temp.getjTFShowCMT().setText(chungMinhThu);
+            }
+        });
+    }//GEN-LAST:event_jButtonMacCovidActionPerformed
+
+    private void jButtonCLTaiNhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCLTaiNhaActionPerformed
+        ShowInfoAllNhanKhau temp = new ShowInfoAllNhanKhau();
+        temp.setLocationRelativeTo(null);
+        temp.setResizable(false);
+        temp.setVisible(true);
+        // sửa
+        temp.setTitle("Trường hợp cách ly");
+        temp.getjLabelTitle().setText("Các nhân khẩu cách ly tại nhà");
+        String query = "SELECT nhan_khau.ID, nhan_khau.chungMinhThu, nhan_khau.hoTen, nhan_khau.ngaySinh, nhan_khau.gioiTinh, nhan_khau.diaChi, nhan_khau.soDienThoai FROM nhan_khau INNER JOIN cach_ly ON (nhan_khau.ID = cach_ly.IDNhanKhau) WHERE cach_ly.loaiCL = 1";
+        temp.getShowTableNhanKhauController().showNhanKhauWithStr(temp.getjTableNhanKhau(), query.trim());
+
+        temp.getjTableNhanKhau().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DefaultTableModel model = (DefaultTableModel) temp.getjTableNhanKhau().getModel();
+                int rowIndex = temp.getjTableNhanKhau().getSelectedRow();
+                String chungMinhThu = model.getValueAt(rowIndex, 1).toString().trim();
+                temp.getjTFShowCMT().setText(chungMinhThu);
+            }
+        });
+    }//GEN-LAST:event_jButtonCLTaiNhaActionPerformed
+
+    private void jButtonCLTapTrungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCLTapTrungActionPerformed
+        ShowInfoAllNhanKhau temp = new ShowInfoAllNhanKhau();
+        temp.setLocationRelativeTo(null);
+        temp.setResizable(false);
+        temp.setVisible(true);
+        // sửa
+        temp.setTitle("Trường hợp cách ly");
+        temp.getjLabelTitle().setText("Các nhân khẩu cách ly tập trung");
+        String query = "SELECT nhan_khau.ID, nhan_khau.chungMinhThu, nhan_khau.hoTen, nhan_khau.ngaySinh, nhan_khau.gioiTinh, nhan_khau.diaChi, nhan_khau.soDienThoai FROM nhan_khau INNER JOIN cach_ly ON (nhan_khau.ID = cach_ly.IDNhanKhau) WHERE cach_ly.loaiCL = 2";
+        temp.getShowTableNhanKhauController().showNhanKhauWithStr(temp.getjTableNhanKhau(), query.trim());
+
+        temp.getjTableNhanKhau().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DefaultTableModel model = (DefaultTableModel) temp.getjTableNhanKhau().getModel();
+                int rowIndex = temp.getjTableNhanKhau().getSelectedRow();
+                String chungMinhThu = model.getValueAt(rowIndex, 1).toString().trim();
+                temp.getjTFShowCMT().setText(chungMinhThu);
+            }
+        });
+    }//GEN-LAST:event_jButtonCLTapTrungActionPerformed
+
+    private void jButtonThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThongKeActionPerformed
+        ThongKeManage thongKeManage = new ThongKeManage();
+        thongKeManage.setLocationRelativeTo(null);
+        thongKeManage.setResizable(false);
+        thongKeManage.setVisible(true);
+
+        thongKeManage.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent e) {
+                showThongKe();
+            }
+        });
+    }//GEN-LAST:event_jButtonThongKeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCLTaiNha;
