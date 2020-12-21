@@ -105,7 +105,6 @@ public class TrangChu extends javax.swing.JFrame {
         jButtonMacCovid = new javax.swing.JButton();
         jButtonCLTaiNha = new javax.swing.JButton();
         jButtonCLTapTrung = new javax.swing.JButton();
-        jButtonDaKhaiBao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -303,8 +302,6 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jButtonDaKhaiBao.setText("XEM");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -370,9 +367,7 @@ public class TrangChu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabelChuaKhaiBao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonTuVungDich, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonDaKhaiBao, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jButtonTuVungDich))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(jLabel8)
@@ -395,7 +390,6 @@ public class TrangChu extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelDaKhaiBao, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButtonDaKhaiBao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelChuaKhaiBao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
@@ -430,7 +424,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jButtonCLTapTrung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelCLTapTrung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -695,7 +689,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCLTaiNha;
     private javax.swing.JButton jButtonCLTapTrung;
     private javax.swing.JButton jButtonCachLy;
-    private javax.swing.JButton jButtonDaKhaiBao;
     private javax.swing.JButton jButtonDichTe;
     private javax.swing.JButton jButtonMacCovid;
     private javax.swing.JButton jButtonNhanKhau;

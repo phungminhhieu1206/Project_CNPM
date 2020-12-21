@@ -107,7 +107,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="admin"/>
             <Property name="name" type="java.lang.String" value="txtUserName" noResource="true"/>
           </Properties>
           <AccessibilityProperties>
@@ -122,7 +121,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="admin"/>
             <Property name="name" type="java.lang.String" value="txtPasswd" noResource="true"/>
           </Properties>
         </Component>

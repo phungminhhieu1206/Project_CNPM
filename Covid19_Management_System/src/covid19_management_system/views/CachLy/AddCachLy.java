@@ -1042,6 +1042,10 @@ public class AddCachLy extends javax.swing.JFrame {
         temp.setLocationRelativeTo(null);
         temp.setResizable(false);
         temp.setVisible(true);
+        
+        // sửa
+        String query = "SELECT `ID`, `chungMinhThu`, `hoTen`, `ngaySinh`, `gioiTinh`, `diaChi`, `soDienThoai` FROM `nhan_khau` WHERE 1";
+        temp.getShowTableNhanKhauController().showNhanKhauWithStr(temp.getjTableNhanKhau(), query.trim());
 
         temp.getjTableNhanKhau().addMouseListener(new MouseAdapter() {
             @Override

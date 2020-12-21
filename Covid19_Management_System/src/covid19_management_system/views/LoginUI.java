@@ -119,7 +119,6 @@ public class LoginUI extends javax.swing.JFrame {
         jpnLogin.setForeground(new java.awt.Color(0, 153, 153));
 
         jTFUsername.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTFUsername.setText("admin");
         jTFUsername.setName("txtUserName"); // NOI18N
         jTFUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,7 +127,6 @@ public class LoginUI extends javax.swing.JFrame {
         });
 
         jPassword.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPassword.setText("admin");
         jPassword.setName("txtPasswd"); // NOI18N
 
         btnLogin.setBackground(new java.awt.Color(255, 255, 255));
