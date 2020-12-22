@@ -6,6 +6,7 @@
 package covid19_management_system.controllers.cachlyController;
 
 import covid19_management_system.MY_CONNECTION;
+import covid19_management_system.models.CachLyModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,74 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ShowTableCachLyController {
     MY_CONNECTION my_connection = new MY_CONNECTION();
+    
+    public void showTest(JTable table, int IDNhanKhau) {
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        String query = "SELECT `ngayTest`, `lanTest`, `hinhThucTest`, `diaDiemTest`, `ketQuaTest` FROM `test_covid` WHERE `IDNhanKhau`=?";
+        try {
+            preparedStatement = my_connection.createConnection().prepareStatement(query);
+            preparedStatement.setInt(1, IDNhanKhau);
+            resultSet = preparedStatement.executeQuery();
+
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            for (int i = tableModel.getRowCount() - 1; i >= 0; i--) {
+                tableModel.removeRow(i);
+            }
+            Object[] row;
+
+            while (resultSet.next()) {
+                row = new Object[5];
+//                row[0] = resultSet.getInt(1);
+//                row[1] = resultSet.getString(2);
+//                row[2] = resultSet.getString(3);
+
+                // lanTest
+                row[0] = resultSet.getInt(2);
+                
+                // ngayTest
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                row[1] = dateFormat.format(resultSet.getDate(1));
+
+                // gioiTinh
+                int hinhThucTest = resultSet.getInt(3);
+                switch (hinhThucTest) {
+                    case 0:
+                        row[2] = "";
+                        break;
+                    case 1:
+                        row[2] = "PCR";
+                        break;
+                    case 2:
+                        row[2] = "Test nhanh";
+                        break;
+                    default:
+                        break;
+                }
+                row[3] = resultSet.getString(4);
+                // gioiTinh
+                int ketQuaTest = resultSet.getInt(5);
+                switch (ketQuaTest) {
+                    case 0:
+                        row[4] = "";
+                        break;
+                    case 1:
+                        row[4] = "Âm tính";
+                        break;
+                    case 2:
+                        row[4] = "Dương tính";
+                        break;
+                    default:
+                        break;
+                }
+
+                tableModel.addRow(row);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ShowTableCachLyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void showCachLy(JTable table) {
         PreparedStatement preparedStatement;
@@ -375,5 +444,7 @@ public class ShowTableCachLyController {
         }
         return false;
     }
+    
+    
     
 }

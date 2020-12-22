@@ -11,6 +11,7 @@ import covid19_management_system.controllers.nhankhauController.DeleteNhanKhauCo
 import covid19_management_system.controllers.nhankhauController.ShowTableNhanKhauController;
 import covid19_management_system.views.CachLy.AddCachLy;
 import covid19_management_system.views.CachLy.EditCachLy;
+import covid19_management_system.views.CachLy.ShowInfoCachLy;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -452,15 +453,15 @@ public class CachLyManage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableKhaiCachLyMouseEntered
 
     private void jButtonXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXemChiTietActionPerformed
-//                if (jTFSearchByCMT.getText().isEmpty()){
-//                        JOptionPane.showMessageDialog(rootPane, "Chọn nhân khẩu muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
-//                    } else {
-//                        String chungMinhThu = jTFSearchByCMT.getText().trim();
-//                        InfoNhanKhau infoNhanKhau = new InfoNhanKhau(chungMinhThu);
-//                        infoNhanKhau.setLocationRelativeTo(null);
-//                        infoNhanKhau.setResizable(false);
-//                        infoNhanKhau.setVisible(true);
-//                    }
+        if (jTFSearchByCMT.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Chọn khai cách ly muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String chungMinhThu = jTFSearchByCMT.getText().trim();
+            ShowInfoCachLy showInfoCachLy = new ShowInfoCachLy(chungMinhThu);
+            showInfoCachLy.setLocationRelativeTo(null);
+            showInfoCachLy.setResizable(false);
+            showInfoCachLy.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonXemChiTietActionPerformed
 
     private void jButtonSearchCachLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCachLyActionPerformed

@@ -838,6 +838,11 @@ public class EditCachLy extends javax.swing.JFrame {
 
         jButtonShowInfoTest.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonShowInfoTest.setText("HIỆN CÁC LẦN TEST");
+        jButtonShowInfoTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonShowInfoTestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -889,7 +894,6 @@ public class EditCachLy extends javax.swing.JFrame {
                         .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(49, 49, 49))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1213,6 +1217,13 @@ public class EditCachLy extends javax.swing.JFrame {
     private void jTFLanTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFLanTestActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFLanTestActionPerformed
+
+    private void jButtonShowInfoTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonShowInfoTestActionPerformed
+        ShowTest temp = new ShowTest(this.IDNhanKhau);
+        temp.setLocationRelativeTo(null);
+        temp.setResizable(false);
+        temp.setVisible(true);
+    }//GEN-LAST:event_jButtonShowInfoTestActionPerformed
 
     public void clearCLTapTrungFields() {
         jTFDiaDiemCL.setText(null);
