@@ -11,6 +11,7 @@ import covid19_management_system.controllers.nhankhauController.DeleteNhanKhauCo
 import covid19_management_system.controllers.nhankhauController.ShowTableNhanKhauController;
 import covid19_management_system.views.DichTe.AddDichTe;
 import covid19_management_system.views.DichTe.EditDichTe;
+import covid19_management_system.views.DichTe.ShowInfoDichTe;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -491,15 +492,15 @@ public class DichTeManage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXemChiTietActionPerformed
-//        if (jTFSearchByCMT.getText().isEmpty()){
-//            JOptionPane.showMessageDialog(rootPane, "Chọn nhân khẩu muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
-//        } else {
-//            String chungMinhThu = jTFSearchByCMT.getText().trim();
-//            InfoNhanKhau infoNhanKhau = new InfoNhanKhau(chungMinhThu);
-//            infoNhanKhau.setLocationRelativeTo(null);
-//            infoNhanKhau.setResizable(false);
-//            infoNhanKhau.setVisible(true);
-//        }
+    if (jTFSearchByCMT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Chọn khai dịch tễ muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String chungMinhThu = jTFSearchByCMT.getText().trim();
+                ShowInfoDichTe showInfoDichTe = new ShowInfoDichTe(chungMinhThu);
+                showInfoDichTe.setLocationRelativeTo(null);
+                showInfoDichTe.setResizable(false);
+                showInfoDichTe.setVisible(true);
+            }
     }//GEN-LAST:event_jButtonXemChiTietActionPerformed
 
     private boolean checkDesignCMT() {
