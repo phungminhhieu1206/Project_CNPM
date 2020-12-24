@@ -123,6 +123,18 @@ public class ThongKeController {
             Logger.getLogger(ThongKeController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        // 9. Đếm xem có bao nhiêu người đã test covid
+        String query9 = "SELECT COUNT(DISTINCT `IDNhanKhau`) FROM `test_covid`";
+        try {
+            preparedStatement = my_connection.createConnection().prepareStatement(query9);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                thongKeModel.setSoNguoiTestCovid(resultSet.getInt(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ThongKeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         return thongKeModel;
     }

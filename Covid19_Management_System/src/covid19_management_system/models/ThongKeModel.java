@@ -91,5 +91,13 @@ public class ThongKeModel {
     private int cachLy;
     private int CLTaiNha;
     private int CLTapTrung;
-    
+
+    public int getSoNguoiTestCovid() {
+        return soNguoiTestCovid;
+    }
+
+    public void setSoNguoiTestCovid(int soNguoiTestCovid) {
+        this.soNguoiTestCovid = soNguoiTestCovid;
+    }
+    private int soNguoiTestCovid;
 }

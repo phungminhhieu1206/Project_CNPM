@@ -9,6 +9,7 @@ import covid19_management_system.controllers.cachlyController.ShowTableCachLyCon
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -40,6 +41,14 @@ public class ShowTest extends javax.swing.JFrame {
             }
         });
     }
+
+    public JLabel getjLabelTitle() {
+        return jLabelTitle;
+    }
+
+    public void setjLabelTitle(JLabel jLabelTitle) {
+        this.jLabelTitle = jLabelTitle;
+    }
     
     public void settingTableShowNhanKhau() {
         jTableCacLanTest.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
@@ -62,7 +71,7 @@ public class ShowTest extends javax.swing.JFrame {
 
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jLabelTitle2 = new javax.swing.JLabel();
+        jLabelTitle = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableCacLanTest = new javax.swing.JTable();
@@ -72,23 +81,23 @@ public class ShowTest extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabelTitle2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelTitle2.setText("CÁC LẦN TEST COVID");
+        jLabelTitle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelTitle.setText("CÁC LẦN TEST COVID");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelTitle2)
-                .addGap(302, 302, 302))
+                .addContainerGap(339, Short.MAX_VALUE)
+                .addComponent(jLabelTitle)
+                .addGap(331, 331, 331))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTitle2)
+                .addComponent(jLabelTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -205,7 +214,7 @@ public class ShowTest extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelTitle2;
+    private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
